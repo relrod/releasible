@@ -9,4 +9,8 @@ setup(
     author_email='relrod@redhat.com',
     url='https://github.com/relrod/releasible',
     packages=['releasible'],
+    install_requires=[
+        'requests',
+        'staticjinja',
+    ],
 )
