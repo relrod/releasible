@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Dependency Outlook</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group me-2">
+      <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+      <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+    </div>
+    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+      <span data-feather="calendar"></span>
+      This week
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div id="chart_div"></div>
+  </div>
+</div>
+
+<script>
+  google.charts.load('current', {packages: ['corechart', 'line']});
+  google.charts.setOnLoadCallback(drawCurveTypes);
+
+  function drawCurveTypes() {
+    var data = new google.visualization.DataTable();
+
+    <?php
+      $issues = AnsibleGitHub::getIssuesForMonthGrouped();
+      echo AnsibleGitHub::dateArrayToGoogleChart($issues);
+    ?>
+
+    var options = {
+      title: 'Recent Stable Release Issue Activity',
+      hAxis: {
+        title: 'Time'
+      },
+      vAxis: {
+        title: 'Issues'
+      },
+      series: {
+        1: {curveType: 'function'}
+      }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+</script>
+{% endblock %}
