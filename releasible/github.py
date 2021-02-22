@@ -1,14 +1,15 @@
 import re
-import requests
 
 class GitHubAPICall:
-    def __init__(self, token):
+    def __init__(self, token, aio_session):
         self.token = token
+        self.aio_session = aio_session
         self.link = None
         self.calls = 0
 
-    def get(self, endpoint):
-        r = requests.get(
+    async def get(self, endpoint):
+        print(endpoint)
+        async with self.aio_session.get(
             endpoint,
             headers={
                 'Authorization': 'token {0}'.format(self.token),
@@ -17,26 +18,29 @@ class GitHubAPICall:
                     'application/vnd.github.groot-preview+json, '
                     'application/vnd.github.v3+json'
                 ),
-            })
+            }) as resp:
 
-        r.raise_for_status()
-        self.calls += 1
-        self.link = r.headers.get('link')
-        return r
+            if resp.status != 200:
+                raise Exception(
+                    '{0} got status {1}'.format(endpoint, resp.status))
 
-    def get_all_pages(self, endpoint, key=None):
+            self.calls += 1
+            self.link = resp.headers.get('link')
+            return await resp.json()
+
+    async def get_all_pages(self, endpoint, key=None):
         req = self.get(endpoint)
         if key is not None:
-            out = req.json()[key]
+            out = (await req)[key]
         else:
-            out = req.json()
+            out = req
 
         next_page = self.next_page_url()
         while next_page:
             if key is not None:
-                out += self.get(next_page).json()[key]
+                out += await self.get(next_page)[key]
             else:
-                out += self.get(next_page).json()
+                out += await self.get(next_page)
             next_page = self.next_page_url()
 
         self.link = None

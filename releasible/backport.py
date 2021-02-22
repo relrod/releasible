@@ -1,3 +1,4 @@
+import asyncio
 import re
 from releasible.github import GitHubAPICall
 
@@ -76,13 +77,13 @@ def normalize_pr_url(
     raise Exception('Did not understand given PR')
 
 class BackportFinder(GitHubAPICall):
-    def prs_for_commit(self, sha):
+    async def prs_for_commit(self, sha):
         # Find the repos associated with the commit
         query = 'hash:{0} org:ansible org:ansible-collections is:public'.format(
             sha)
         url = 'https://api.github.com/search/commits?per_page=100&q={0}'.format(
             query)
-        res = self.get(url).json().get('items')
+        res = (await self.get(url)).get('items')
 
         if not res:
             return []
@@ -96,29 +97,35 @@ class BackportFinder(GitHubAPICall):
             url = 'https://api.github.com/repos/{0}/commits/{1}/pulls?per_page=100'.format(
                 repo,
                 sha)
-            prs += self.get(url).json()
+            prs += await self.get(url)
 
-        return prs
+        # We have to query the actual pull request endpoint, otherwise we lack
+        # the fields we use later for scoring (comments, review_comments, etc.)
+        return await asyncio.gather(*[self.get_pr(pr['number']) for pr in prs])
 
-    def get_backports_for_version(self, version):
+    async def get_backports_for_version(self, version):
+        out = []
         query = 'is:pr is:open repo:ansible/ansible label:backport '
         query += '-label:waiting_on_upstream -label:on_hold '
         query += 'label:affects_{0}'.format(version)
 
-        prs = self.get_all_pages(
+        prs = await self.get_all_pages(
             'https://api.github.com/search/issues?per_page=100&'
             'sort=created&q={0}'.format(query),
             key='items')
-        return prs
 
-    def get_pr(self, pr, allow_non_ansible_ansible=True):
-        return self.get(
+        cors = [self.get_pr(pr['number']) for pr in prs]
+        return await asyncio.gather(*cors)
+
+
+    async def get_pr(self, pr, allow_non_ansible_ansible=True):
+        return await self.get(
             normalize_pr_url(
                 pr,
                 allow_non_ansible_ansible=allow_non_ansible_ansible,
                 api=True))
 
-    def guess_original_pr(self, q):
+    async def guess_original_pr(self, q):
         '''
         Do magic. It will search the PR (the newest PR - the backport) and try
         to find where it originated.
@@ -143,7 +150,7 @@ class BackportFinder(GitHubAPICall):
                 raise Exception('given dict was not valid PR: no "title" found')
             pr = q
         else:
-            pr = self.get_pr(q).json()
+            pr = await self.get_pr(q)
 
         possibilities = []
 
@@ -154,7 +161,7 @@ class BackportFinder(GitHubAPICall):
             if not ticket:
                 ticket = title_search.group('ticket2')
             try:
-                possibilities.append(self.get_pr(ticket).json())
+                possibilities.append(await self.get_pr(ticket))
             except Exception:
                 pass
 
@@ -164,7 +171,7 @@ class BackportFinder(GitHubAPICall):
             # a. Try searching for a `git cherry-pick` line
             cherrypick = PULL_CHERRY_PICKED_FROM.match(line)
             if cherrypick:
-                prs = self.prs_for_commit(cherrypick.group('hash'))
+                prs = await self.prs_for_commit(cherrypick.group('hash'))
                 possibilities.extend(prs)
                 continue
 
@@ -180,7 +187,7 @@ class BackportFinder(GitHubAPICall):
                     # we know it's definitely a pull request.
                     try:
                         pr_url = '{0}/{1}#{2}'.format(ticket[0], ticket[1], ticket[2])
-                        ticket_pr = self.get_pr(pr_url).json()
+                        ticket_pr = await self.get_pr(pr_url)
                         possibilities.append(ticket_pr)
                     except Exception:
                         pass
