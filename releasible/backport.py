@@ -138,7 +138,12 @@ class BackportFinder(GitHubAPICall):
         correctness is not guaranteed.
         '''
 
-        pr = self.get_pr(q).json()
+        if isinstance(q, dict):
+            if 'title' not in q:
+                raise Exception('given dict was not valid PR: no "title" found')
+            pr = q
+        else:
+            pr = self.get_pr(q).json()
 
         possibilities = []
 
