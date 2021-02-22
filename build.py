@@ -11,6 +11,7 @@ from releasible.github import GitHubAPICall
 from releasible.backport import BackportFinder
 
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN_RO')
+VERSIONS = ['2.8', '2.9', '2.10']
 
 async def ctx_aut(template):
     aio_session = aiohttp.ClientSession()
@@ -31,7 +32,6 @@ async def ctx_aut(template):
 
 async def ctx_backports(template):
     # TODO: We need to unhardcode these:
-    versions = ['2.10']
     backports = {}
     originals = {}
     aio_session = aiohttp.ClientSession()
@@ -100,7 +100,7 @@ async def ctx_backports(template):
         else:
             return 'success'
 
-    for version in versions:
+    for version in VERSIONS:
         prs = await bf.get_backports_for_version(version)
         backports[version] = prs
 
