@@ -107,7 +107,7 @@ class BackportFinder(GitHubAPICall):
         out = []
         query = 'is:pr is:open repo:ansible/ansible label:backport '
         query += '-label:waiting_on_upstream -label:on_hold '
-        query += 'label:affects_{0}'.format(version)
+        query += 'base:stable-{0}'.format(version)
 
         prs = await self.get_all_pages(
             'https://api.github.com/search/issues?per_page=100&'
