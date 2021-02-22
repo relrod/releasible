@@ -7,7 +7,7 @@ import sys
 
 from releasible.github import GitHubAPICall
 
-GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
+GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN_RO')
 
 def ctx_aut(template):
     client = GitHubAPICall(GITHUB_TOKEN)
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     site = Site.make_site(
         searchpath='static',
         outpath='site',
-        contexts=[('.*\.html', base)],
+        contexts=[(r'.*\.html', base)],
     )
     # enable automatic reloading
     site.render(use_reloader=True)

@@ -1,4 +1,6 @@
 site
+htmlcov
+.coverage
 __pycache__
 *.pyo
 *.pyc
