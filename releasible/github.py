@@ -12,7 +12,11 @@ class GitHubAPICall:
             endpoint,
             headers={
                 'Authorization': 'token {0}'.format(self.token),
-                'Accept': 'application/vnd.github.cloak-preview, application/vnd.github.groot-preview+json',
+                'Accept': (
+                    'application/vnd.github.cloak-preview, '
+                    'application/vnd.github.groot-preview+json, '
+                    'application/vnd.github.v3+json'
+                ),
             })
 
         r.raise_for_status()
