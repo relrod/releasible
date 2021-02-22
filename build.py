@@ -44,14 +44,53 @@ async def ctx_backports(template):
 
     def score_pr(pr):
         '''Assign a risk score to the given PR.'''
+        # If adding more metrics, add their max to max_score (or less to weigh
+        # them differently)
+        max_score = 50
         score = 0
-        score += pr.get('comments', 0) * 0.45
-        score += pr.get('review_comments', 0) * 0.45
-        score += abs(pr.get('additions', 0) - pr.get('deletions', 0)) * 0.5
-        score += pr.get('changed_files', 0) * 0.5
-        score /= 4 # divide by number of metrics, create an average
-        print((pr.get('number'), pr.get('comments'), pr.get('review_comments'), pr.get('additions'), pr.get('deletions'), pr.get('changed_files'), score))
-        return score
+        # This is all arbitrary, we just need to roughly assign a score.
+        comments = pr.get('comments', 0)
+        if comments > 5:
+            score += 10
+        else:
+            score += comments * 2
+
+        review_comments = pr.get('review_comments', 0)
+        if comments > 3:
+            score += 10
+        elif comments == 3:
+            score += 8
+        elif comments == 2:
+            score += 4
+        else:
+            score += 1
+
+        # This isn't out of 10, we intentionally weigh this less
+        lines_changed = abs(pr.get('additions', 0) + pr.get('deletions', 0))
+        if lines_changed < 10:
+            score += 1
+        elif lines_changed < 25:
+            score += 3
+        else:
+            score += 5
+
+        # This isn't out of 10, we intentionally weigh this less
+        files_changed = pr.get('changed_files', 0)
+        if files_changed < 3:
+            score += 1
+        elif files_changed < 5:
+            score += 3
+        else:
+            score += 5
+
+        # This isn't out of 10, we intentionally weigh this less
+        commits = pr.get('commits', 0)
+        if commits < 3:
+            score += commits
+        else:
+            score += 5
+
+        return score / max_score
 
     for version in versions:
         prs = await bf.get_backports_for_version(version)
@@ -76,15 +115,11 @@ async def ctx_backports(template):
             if score > max_orig_score:
                 max_orig_score = score
 
-    print(orig_scores)
-
     for pr, score in scores.items():
         scores[pr] = (score / max_score) * 100
 
     for pr, score in orig_scores.items():
         orig_scores[pr] = (score / max_orig_score) * 100
-
-    print(orig_scores)
 
     out = {
         'backports': backports,
