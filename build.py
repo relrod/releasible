@@ -92,6 +92,14 @@ async def ctx_backports(template):
 
         return score / max_score
 
+    def score_to_class(score):
+        if score > 80:
+            return 'danger'
+        elif score > 50:
+            return 'warning'
+        else:
+            return 'success'
+
     for version in versions:
         prs = await bf.get_backports_for_version(version)
         backports[version] = prs
@@ -126,6 +134,7 @@ async def ctx_backports(template):
         'originals': originals,
         'scores': scores,
         'orig_scores': orig_scores,
+        'score_to_class': score_to_class,
     }
 
     await aio_session.close()

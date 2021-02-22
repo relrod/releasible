@@ -1,123 +1,67 @@
 {% extends 'base.html' %}
 
 {% block main %}
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Backports Queue</h1>
-  <div class="btn-toolbar mb-2 mb-md-0">
-    <div class="dropdown">
-      <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        All Branches
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="#">All Branches</a></li>
-        <li><a class="dropdown-item" href="#">stable-2.8</a></li>
-        <li><a class="dropdown-item" href="#">stable-2.9</a></li>
-        <li><a class="dropdown-item" href="#">stable-2.10</a></li>
-      </ul>
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Actionable Backports</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr class="text-center">
+            <th scope="col" colspan="3">Backport</th>
+            <th scope="col" colspan="3">Original Patch</th>
+          </tr>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Rel. Churn</th>
+            <th scope="col">PR #</th>
+            <th scope="col">Author</th>
+            <th scope="col">Rel. Churn</th>
+          </tr>
+        </thead>
+        {% for version, prs in backports.items() %}
+          <tbody>
+            <tr>
+              <th scope="col" colspan="6">Version: {{ version }}</th>
+            </tr>
+            {% for backport in prs %}
+              <tr>
+                <td><a href="{{ backport['html_url'] }}">{{ backport['title'] }}</a></td>
+                <td><a href="{{ backport['user']['html_url'] }}">@{{ backport['user']['login'] }}</a></td>
+                <td>
+                  <div class="progress">
+                    {% set score = scores[backport['number']] %}
+                    <div class="progress-bar bg-{{ score_to_class(score) }}" role="progressbar" style="width: {{ score }}%" aria-valuenow="{{ score }}" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                {% if backport['number'] in originals %}
+                  <td>
+                    <a href="{{ originals[backport['number']]['html_url'] }}">
+                      #{{ originals[backport['number']]['number'] }}
+                    </a>
+                  </td>
+                  <td>
+                    <a href="{{ originals[backport['number']]['user']['html_url'] }}">
+                      @{{ originals[backport['number']]['user']['login'] }}
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      {% set score = orig_scores[backport['number']] %}
+                      <div class="progress-bar bg-{{ score_to_class(score) }}" role="progressbar" style="width: {{ score }}%" aria-valuenow="{{ score }}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                {% else %}
+                  <td colspan="3">N/A</td>
+                {% endif %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        {% endfor %}
+      </table>
     </div>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-lg-12">
-    <h3>stable-2.9</h3>
-    <table class="table table-striped table-bordered">
-      <thead>
-        <tr class="text-center">
-          <th scope="col" colspan="3">Backport</th>
-          <th scope="col" colspan="3">Original Patch</th>
-        </tr>
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Author</th>
-          <th scope="col">Rel. Churn</th>
-          <th scope="col">PR #</th>
-          <th scope="col">Author</th>
-          <th scope="col">Rel. Churn</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="#">Update mongodb replicaset check_compatibility function</a></td>
-          <td><a href="#">@rhysmeister</a></td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </td>
-          <td colspan="3">N/A</td>
-        </tr>
-
-        <tr>
-          <td><a href="#">[stable-2.9] hostname - add Almalinux support (#73619)</a></td>
-          <td><a href="#">@samdoran</a></td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar bg-success" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </td>
-          <td><a href="#">#73619</a></td>
-          <td><a href="#">@guisea</a></td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar bg-warning" role="progressbar" style="width: 23%" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </td>
-        </tr>
-
-        <tr>
-          <td><a href="#">[stable-2.9] hostname - add Almalinux support (#73619)</a></td>
-          <td><a href="#">@samdoran</a></td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar bg-success" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </td>
-          <td><a href="#">#73619</a></td>
-          <td><a href="#">@guisea</a></td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar bg-warning" role="progressbar" style="width: 23%" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </td>
-        </tr>
-
-        <tr>
-          <td><a href="#">[stable-2.9] hostname - add Almalinux support (#73619)</a></td>
-          <td><a href="#">@samdoran</a></td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar bg-success" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </td>
-          <td><a href="#">#73619</a></td>
-          <td><a href="#">@guisea</a></td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar bg-warning" role="progressbar" style="width: 23%" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </td>
-        </tr>
-
-        <tr>
-          <td><a href="#">[stable-2.9] hostname - add Almalinux support (#73619)</a></td>
-          <td><a href="#">@samdoran</a></td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar bg-success" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </td>
-          <td><a href="#">#73619</a></td>
-          <td><a href="#">@guisea</a></td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar bg-warning" role="progressbar" style="width: 23%" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </td>
-        </tr>
-
-      </tbody>
-    </table>
-  </div>
-</div>
 {% endblock %}
