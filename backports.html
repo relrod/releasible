@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="css/releasible.css" rel="stylesheet">
+
+    <title>Releasible - Home</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  </head>
+  <body>
+    <header class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">Releasible</a>
+      <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul class="navbar-nav px-3 ms-auto d-none d-lg-flex">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="https://github.com/ansible/ansble">GitHub: ansible/ansible</a>
+        </li>
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="https://pypi.org/project/ansible">PyPI: ansible</a>
+        </li>
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="https://pypi.org/project/ansible-base">PyPI: ansible-base</a>
+        </li>
+      </ul>
+    </header>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="/overview.html">
+                  <span class="bi bi-house-door"></span>
+                  Release Overview
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/backports.html">
+                  <span class="bi bi-arrow-counterclockwise"></span>
+                  Backports Queue
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/ci.html">
+                  <span class="bi bi-stoplights"></span>
+                  Upstream CI Status
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/aut.html">
+                  <span class="bi bi-emoji-sunglasses"></span>
+                  Artifact Health
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/dependencies.html">
+                  <span class="bi bi-diagram-3"></span>
+                  Dependency Outlook
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/issues.html">
+                  <span class="bi bi-bar-chart"></span>
+                  Issue Statistics
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/cves.html">
+                  <span class="bi bi-exclamation-diamond"></span>
+                  Public CVEs
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/announcement.html">
+                  <span class="bi bi-megaphone"></span>
+                  Release Announcement
+                </a>
+              </li>
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Community</span>
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link " href="/ppa.html">
+                  <span class="bi bi-download"></span>
+                  PPA Download Statistics
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/packages.html">
+                  <span class="bi bi-gift"></span>
+                  Distribution Packages
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Actionable Backports</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr class="text-center">
+            <th scope="col" colspan="3">Backport</th>
+            <th scope="col" colspan="3">Original Patch</th>
+          </tr>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Rel. Churn</th>
+            <th scope="col">PR #</th>
+            <th scope="col">Author</th>
+            <th scope="col">Rel. Churn</th>
+          </tr>
+        </thead>
+        
+          <tbody>
+            <tr>
+              <th scope="col" colspan="6">Version: 2.8</th>
+            </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73551">[stable-2.8] Bump azure-pipelines-test-container to version 1.8.0</a></td>
+                <td><a href="https://github.com/eqrx">@eqrx</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 11.428571428571429%" aria-valuenow="11.428571428571429" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/73545">
+                      #73545
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/eqrx">
+                      @eqrx
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 18.18181818181818%" aria-valuenow="18.18181818181818" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+          </tbody>
+        
+          <tbody>
+            <tr>
+              <th scope="col" colspan="6">Version: 2.9</th>
+            </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73670">New AWS module mod_defaults - ec2_vpc_endpoint_service_info</a></td>
+                <td><a href="https://github.com/tremble">@tremble</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 51.42857142857144%" aria-valuenow="51.42857142857144" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible-collections/community.aws/pull/346">
+                      #346
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/tremble">
+                      @tremble
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 54.54545454545454%" aria-valuenow="54.54545454545454" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73669">New AWS module mod_defaults - iam_saml_federation</a></td>
+                <td><a href="https://github.com/tremble">@tremble</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 34.285714285714285%" aria-valuenow="34.285714285714285" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible-collections/community.aws/pull/419">
+                      #419
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/tremble">
+                      @tremble
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 78.78787878787878%" aria-valuenow="78.78787878787878" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73649">[stable-2.9] hostname - add Almalinux support (#73619)</a></td>
+                <td><a href="https://github.com/samdoran">@samdoran</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 11.428571428571429%" aria-valuenow="11.428571428571429" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/73619">
+                      #73619
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/guisea">
+                      @guisea
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 36.36363636363636%" aria-valuenow="36.36363636363636" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73638">[2.9] docker_image: do not crash in load_image for docker-py < 2.5.0.</a></td>
+                <td><a href="https://github.com/felixfontein">@felixfontein</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 34.285714285714285%" aria-valuenow="34.285714285714285" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible-collections/community.docker/pull/73">
+                      #73
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/felixfontein">
+                      @felixfontein
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 63.63636363636363%" aria-valuenow="63.63636363636363" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73584">[stable-2.9]ansible-test: yamllint, check the assigment</a></td>
+                <td><a href="https://github.com/goneri">@goneri</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 11.428571428571429%" aria-valuenow="11.428571428571429" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/73540">
+                      #73540
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/goneri">
+                      @goneri
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 18.18181818181818%" aria-valuenow="18.18181818181818" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73570">[stable-2.9][ansible-test] attempt to work around podman (#72096)</a></td>
+                <td><a href="https://github.com/goneri">@goneri</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 28.571428571428577%" aria-valuenow="28.571428571428577" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/72096">
+                      #72096
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/relrod">
+                      @relrod
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 63.63636363636363%" aria-valuenow="63.63636363636363" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73556">Fix for private_key overriding in synchronize module</a></td>
+                <td><a href="https://github.com/holser">@holser</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 40.00000000000001%" aria-valuenow="40.00000000000001" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/73556">
+                      #73556
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/holser">
+                      @holser
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 42.42424242424242%" aria-valuenow="42.42424242424242" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73550">[stable-2.9] Bump azure-pipelines-test-container to version 1.8.0</a></td>
+                <td><a href="https://github.com/eqrx">@eqrx</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 11.428571428571429%" aria-valuenow="11.428571428571429" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/73545">
+                      #73545
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/eqrx">
+                      @eqrx
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 18.18181818181818%" aria-valuenow="18.18181818181818" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73544">[stable-2.9] Add AlmaLinux to the family of Red Hat-like operating systems (#73541)</a></td>
+                <td><a href="https://github.com/samdoran">@samdoran</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 28.571428571428577%" aria-valuenow="28.571428571428577" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/73541">
+                      #73541
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/samdoran">
+                      @samdoran
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 42.42424242424242%" aria-valuenow="42.42424242424242" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73513">[stable-2.9] Don't treat host_pinned as lockstep (#73484)</a></td>
+                <td><a href="https://github.com/sivel">@sivel</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 74.28571428571429%" aria-valuenow="74.28571428571429" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/73484">
+                      #73484
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/sivel">
+                      @sivel
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 39.39393939393939%" aria-valuenow="39.39393939393939" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/72301">[packaging/rpm] %{python_sitelib} breaks RHEL8</a></td>
+                <td><a href="https://github.com/relrod">@relrod</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 11.428571428571429%" aria-valuenow="11.428571428571429" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td colspan="3">N/A</td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/72299">Update mongodb replicaset check_compatibility function</a></td>
+                <td><a href="https://github.com/rhysmeister">@rhysmeister</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 94.28571428571429%" aria-valuenow="94.28571428571429" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/71393">
+                      #71393
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/rhysmeister">
+                      @rhysmeister
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 69.6969696969697%" aria-valuenow="69.6969696969697" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/69637">correctly merge multiple facts results (#68987)</a></td>
+                <td><a href="https://github.com/bcoca">@bcoca</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 100.0%" aria-valuenow="100.0" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/68987">
+                      #68987
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/bcoca">
+                      @bcoca
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-danger" role="progressbar" style="width: 100.0%" aria-valuenow="100.0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+          </tbody>
+        
+          <tbody>
+            <tr>
+              <th scope="col" colspan="6">Version: 2.10</th>
+            </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73689">move firewalld to ansible.posix (#70692)</a></td>
+                <td><a href="https://github.com/btravouillon">@btravouillon</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 11.428571428571429%" aria-valuenow="11.428571428571429" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/70692">
+                      #70692
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/maxamillion">
+                      @maxamillion
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 12.121212121212121%" aria-valuenow="12.121212121212121" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73648">[stable-2.10] hostname - add Almalinux support (#73619)</a></td>
+                <td><a href="https://github.com/samdoran">@samdoran</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 11.428571428571429%" aria-valuenow="11.428571428571429" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/73619">
+                      #73619
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/guisea">
+                      @guisea
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 36.36363636363636%" aria-valuenow="36.36363636363636" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73637">WIP: Backport of Split Ansible docs from core docs (#73616)</a></td>
+                <td><a href="https://github.com/acozine">@acozine</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 51.42857142857144%" aria-valuenow="51.42857142857144" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/73616">
+                      #73616
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/samccann">
+                      @samccann
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 69.6969696969697%" aria-valuenow="69.6969696969697" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73595">[stable-2.10] Fix ansible-test handling of egg-info.</a></td>
+                <td><a href="https://github.com/mattclay">@mattclay</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 37.142857142857146%" aria-valuenow="37.142857142857146" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/73594">
+                      #73594
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/mattclay">
+                      @mattclay
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 30.303030303030305%" aria-valuenow="30.303030303030305" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73583">[stable-2.10]ansible-test: yamllint, check the assigment</a></td>
+                <td><a href="https://github.com/goneri">@goneri</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 11.428571428571429%" aria-valuenow="11.428571428571429" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/73322">
+                      #73322
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/goneri">
+                      @goneri
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-danger" role="progressbar" style="width: 81.81818181818183%" aria-valuenow="81.81818181818183" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73573">[stable-2.10] Let vault lookup output unicode string. (#73571)</a></td>
+                <td><a href="https://github.com/eqrx">@eqrx</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 34.285714285714285%" aria-valuenow="34.285714285714285" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/73571">
+                      #73571
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/eqrx">
+                      @eqrx
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 36.36363636363636%" aria-valuenow="36.36363636363636" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73569">[stable-2.10] [ansible-test] attempt to work around podman (#72096)</a></td>
+                <td><a href="https://github.com/goneri">@goneri</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 28.571428571428577%" aria-valuenow="28.571428571428577" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/72096">
+                      #72096
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/relrod">
+                      @relrod
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 63.63636363636363%" aria-valuenow="63.63636363636363" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73566">only add data when there is data to add (#54559)</a></td>
+                <td><a href="https://github.com/bcoca">@bcoca</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 34.285714285714285%" aria-valuenow="34.285714285714285" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/54559">
+                      #54559
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/bcoca">
+                      @bcoca
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 54.54545454545454%" aria-valuenow="54.54545454545454" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73549">[stable-2.10] Bump azure-pipelines-test-container to version 1.8.0</a></td>
+                <td><a href="https://github.com/eqrx">@eqrx</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 11.428571428571429%" aria-valuenow="11.428571428571429" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/73545">
+                      #73545
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/eqrx">
+                      @eqrx
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 18.18181818181818%" aria-valuenow="18.18181818181818" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73543">[stable-2.10] Add AlmaLinux to the family of Red Hat-like operating systems (#73541)</a></td>
+                <td><a href="https://github.com/samdoran">@samdoran</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 48.57142857142858%" aria-valuenow="48.57142857142858" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/73541">
+                      #73541
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/samdoran">
+                      @samdoran
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 42.42424242424242%" aria-valuenow="42.42424242424242" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+              <tr>
+                <td><a href="https://github.com/ansible/ansible/pull/73504">[stable-2.10] Don't treat host_pinned as lockstep (#73484)</a></td>
+                <td><a href="https://github.com/sivel">@sivel</a></td>
+                <td>
+                  <div class="progress">
+                    
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 57.14285714285715%" aria-valuenow="57.14285714285715" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                
+                  <td>
+                    <a href="https://github.com/ansible/ansible/pull/73484">
+                      #73484
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/sivel">
+                      @sivel
+                    </a>
+                  </td>
+                  <td>
+                    <div class="progress">
+                      
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 39.39393939393939%" aria-valuenow="39.39393939393939" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                
+              </tr>
+            
+          </tbody>
+        
+      </table>
+    </div>
+  </div>
+
+        </main>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  </body>
+</html>

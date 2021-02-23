@@ -1,0 +1,1037 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="css/releasible.css" rel="stylesheet">
+
+    <title>Releasible - Home</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  </head>
+  <body>
+    <header class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">Releasible</a>
+      <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul class="navbar-nav px-3 ms-auto d-none d-lg-flex">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="https://github.com/ansible/ansble">GitHub: ansible/ansible</a>
+        </li>
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="https://pypi.org/project/ansible">PyPI: ansible</a>
+        </li>
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="https://pypi.org/project/ansible-base">PyPI: ansible-base</a>
+        </li>
+      </ul>
+    </header>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="/overview.html">
+                  <span class="bi bi-house-door"></span>
+                  Release Overview
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/backports.html">
+                  <span class="bi bi-arrow-counterclockwise"></span>
+                  Backports Queue
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/ci.html">
+                  <span class="bi bi-stoplights"></span>
+                  Upstream CI Status
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/aut.html">
+                  <span class="bi bi-emoji-sunglasses"></span>
+                  Artifact Health
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/dependencies.html">
+                  <span class="bi bi-diagram-3"></span>
+                  Dependency Outlook
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/issues.html">
+                  <span class="bi bi-bar-chart"></span>
+                  Issue Statistics
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/cves.html">
+                  <span class="bi bi-exclamation-diamond"></span>
+                  Public CVEs
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/announcement.html">
+                  <span class="bi bi-megaphone"></span>
+                  Release Announcement
+                </a>
+              </li>
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Community</span>
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link " href="/ppa.html">
+                  <span class="bi bi-download"></span>
+                  PPA Download Statistics
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/packages.html">
+                  <span class="bi bi-gift"></span>
+                  Distribution Packages
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Artifact Health (Release Artifact Testing)</h1>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Job</th>
+          <th scope="col">Status</th>
+          <th scope="col">Result</th>
+          <th scope="col">Start</th>
+          <th scope="col">Stop</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957276324">macos-10.15 pip 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:44:46Z</td>
+            <td>2021-02-23T00:48:11Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957276345">macos-10.15 pip 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:46Z</td>
+            <td>2021-02-23T00:44:11Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957276365">macos-10.15 tar 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:48Z</td>
+            <td>2021-02-23T00:45:53Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957276382">macos-10.15 tar 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:57Z</td>
+            <td>2021-02-23T00:46:05Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957276780">centos7 pip 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:24Z</td>
+            <td>2021-02-23T00:43:59Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957276792">centos7 pip 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:25Z</td>
+            <td>2021-02-23T00:43:57Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957276813">centos7 pip 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:25Z</td>
+            <td>2021-02-23T00:43:44Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957276825">centos7 pip-latest 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:25Z</td>
+            <td>2021-02-23T00:43:54Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957276847">centos7 pip-latest 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:25Z</td>
+            <td>2021-02-23T00:44:05Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957276869">centos7 pip-latest 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:26Z</td>
+            <td>2021-02-23T00:44:03Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957276890">centos7 tar 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:26Z</td>
+            <td>2021-02-23T00:43:45Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957276904">centos7 tar 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:27Z</td>
+            <td>2021-02-23T00:43:48Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957276929">centos7 tar 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:26Z</td>
+            <td>2021-02-23T00:43:40Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957276950">centos7 rpm 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:23Z</td>
+            <td>2021-02-23T00:44:00Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957276966">centos7 rpm 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:25Z</td>
+            <td>2021-02-23T00:44:06Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957276987">centos8 pip 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:27Z</td>
+            <td>2021-02-23T00:43:28Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277007">centos8 pip 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:26Z</td>
+            <td>2021-02-23T00:43:30Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277021">centos8 pip 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:26Z</td>
+            <td>2021-02-23T00:43:21Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277041">centos8 pip-latest 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:28Z</td>
+            <td>2021-02-23T00:43:24Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277053">centos8 pip-latest 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:27Z</td>
+            <td>2021-02-23T00:43:29Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277065">centos8 pip-latest 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:26Z</td>
+            <td>2021-02-23T00:43:16Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277079">centos8 tar 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:27Z</td>
+            <td>2021-02-23T00:43:12Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277091">centos8 tar 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:25Z</td>
+            <td>2021-02-23T00:43:13Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277105">centos8 tar 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:26Z</td>
+            <td>2021-02-23T00:43:08Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277129">ubi7 pip 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:29Z</td>
+            <td>2021-02-23T00:43:29Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277142">ubi7 pip 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:28Z</td>
+            <td>2021-02-23T00:43:23Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277161">ubi7 pip 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:29Z</td>
+            <td>2021-02-23T00:43:14Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277175">ubi7 tar 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:28Z</td>
+            <td>2021-02-23T00:43:06Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277194">ubi7 tar 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:29Z</td>
+            <td>2021-02-23T00:43:10Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277217">ubi7 tar 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:28Z</td>
+            <td>2021-02-23T00:43:08Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277241">ubi7 rpm 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:29Z</td>
+            <td>2021-02-23T00:43:25Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277265">ubi7 rpm 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:27Z</td>
+            <td>2021-02-23T00:43:31Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277283">ubi8 pip 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:29Z</td>
+            <td>2021-02-23T00:43:11Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277302">ubi8 pip 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:30Z</td>
+            <td>2021-02-23T00:43:34Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277323">ubi8 pip 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:28Z</td>
+            <td>2021-02-23T00:43:01Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277342">ubi8 tar 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:30Z</td>
+            <td>2021-02-23T00:43:00Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277358">ubi8 tar 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:06Z</td>
+            <td>2021-02-23T00:43:37Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277375">ubi8 tar 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:29Z</td>
+            <td>2021-02-23T00:42:55Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277392">ubuntu2004 pip 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:24Z</td>
+            <td>2021-02-23T00:45:10Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277404">ubuntu2004 pip 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:33Z</td>
+            <td>2021-02-23T00:45:31Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277422">ubuntu2004 pip 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:25Z</td>
+            <td>2021-02-23T00:44:57Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277439">ubuntu2004 tar 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:34Z</td>
+            <td>2021-02-23T00:45:05Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277451">ubuntu2004 tar 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:35Z</td>
+            <td>2021-02-23T00:45:04Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277464">ubuntu2004 tar 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:35Z</td>
+            <td>2021-02-23T00:44:59Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277481">ubuntu2004 ppa ansible/ansible-2.10 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:25Z</td>
+            <td>2021-02-23T00:43:47Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277505">ubuntu2004 ppa ansible/ansible 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:24Z</td>
+            <td>2021-02-23T00:43:47Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277521">ubuntu1804 pip 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:11Z</td>
+            <td>2021-02-23T00:45:23Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277542">ubuntu1804 pip 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:17Z</td>
+            <td>2021-02-23T00:44:45Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277564">ubuntu1804 pip 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:11Z</td>
+            <td>2021-02-23T00:44:26Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277591">ubuntu1804 pip-latest 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:19Z</td>
+            <td>2021-02-23T00:45:34Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277620">ubuntu1804 pip-latest 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:22Z</td>
+            <td>2021-02-23T00:44:58Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277637">ubuntu1804 pip-latest 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:20Z</td>
+            <td>2021-02-23T00:45:20Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277663">ubuntu1804 tar 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:23Z</td>
+            <td>2021-02-23T00:44:36Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277683">ubuntu1804 tar 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:58Z</td>
+            <td>2021-02-23T00:45:12Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277696">ubuntu1804 tar 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:43:21Z</td>
+            <td>2021-02-23T00:44:34Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277705">ubuntu1804 ppa ansible/ansible-2.8 2.8.19</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:23Z</td>
+            <td>2021-02-23T00:44:11Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277724">ubuntu1804 ppa ansible/ansible-2.9 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:23Z</td>
+            <td>2021-02-23T00:44:13Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277734">ubuntu1804 ppa ansible/ansible-2.10 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:22Z</td>
+            <td>2021-02-23T00:43:45Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277762">ubuntu1804 ppa ansible/ansible 2.9.18</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:23Z</td>
+            <td>2021-02-23T00:44:43Z</td>
+          </tr>
+        
+          <tr>
+            <td>
+  
+    <span class="text-success bi bi-check-circle-fill"></span>
+  
+</td>
+            <th scope="row">
+              <a href="https://github.com/relrod/aut/runs/1957277782">ubuntu1804 ppa ansible/ansible 2.10.6</a>
+            </th>
+            <td>completed</td>
+            <td>success</td>
+            <td>2021-02-23T00:42:22Z</td>
+            <td>2021-02-23T00:43:44Z</td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+
+        </main>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  </body>
+</html>

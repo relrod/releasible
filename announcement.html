@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="css/releasible.css" rel="stylesheet">
+
+    <title>Releasible - Home</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  </head>
+  <body>
+    <header class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">Releasible</a>
+      <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul class="navbar-nav px-3 ms-auto d-none d-lg-flex">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="https://github.com/ansible/ansble">GitHub: ansible/ansible</a>
+        </li>
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="https://pypi.org/project/ansible">PyPI: ansible</a>
+        </li>
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="https://pypi.org/project/ansible-base">PyPI: ansible-base</a>
+        </li>
+      </ul>
+    </header>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="/overview.html">
+                  <span class="bi bi-house-door"></span>
+                  Release Overview
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/backports.html">
+                  <span class="bi bi-arrow-counterclockwise"></span>
+                  Backports Queue
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/ci.html">
+                  <span class="bi bi-stoplights"></span>
+                  Upstream CI Status
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/aut.html">
+                  <span class="bi bi-emoji-sunglasses"></span>
+                  Artifact Health
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/dependencies.html">
+                  <span class="bi bi-diagram-3"></span>
+                  Dependency Outlook
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/issues.html">
+                  <span class="bi bi-bar-chart"></span>
+                  Issue Statistics
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/cves.html">
+                  <span class="bi bi-exclamation-diamond"></span>
+                  Public CVEs
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/announcement.html">
+                  <span class="bi bi-megaphone"></span>
+                  Release Announcement
+                </a>
+              </li>
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Community</span>
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link " href="/ppa.html">
+                  <span class="bi bi-download"></span>
+                  PPA Download Statistics
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/packages.html">
+                  <span class="bi bi-gift"></span>
+                  Distribution Packages
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Release Announcement</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group me-2">
+      <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+      <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+    </div>
+    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+      <span data-feather="calendar"></span>
+      This week
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div id="chart_div"></div>
+  </div>
+</div>
+
+<script>
+  google.charts.load('current', {packages: ['corechart', 'line']});
+  google.charts.setOnLoadCallback(drawCurveTypes);
+
+  function drawCurveTypes() {
+    var data = new google.visualization.DataTable();
+
+    <?php
+      $issues = AnsibleGitHub::getIssuesForMonthGrouped();
+      echo AnsibleGitHub::dateArrayToGoogleChart($issues);
+    ?>
+
+    var options = {
+      title: 'Recent Stable Release Issue Activity',
+      hAxis: {
+        title: 'Time'
+      },
+      vAxis: {
+        title: 'Issues'
+      },
+      series: {
+        1: {curveType: 'function'}
+      }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+</script>
+
+        </main>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  </body>
+</html>
