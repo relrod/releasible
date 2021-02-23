@@ -4,3 +4,5 @@ htmlcov
 __pycache__
 *.pyo
 *.pyc
+.eggs
+*.egg-info

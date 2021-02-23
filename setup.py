@@ -1,5 +1,4 @@
-
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 setup(
     name='releasible',
@@ -8,9 +7,13 @@ setup(
     author='Rick Elrod',
     author_email='relrod@redhat.com',
     url='https://github.com/relrod/releasible',
-    packages=['releasible'],
+    packages=find_packages(),
     install_requires=[
-        'requests',
+        'aiohttp',
+        'arrow',
+        'asyncio',
+        'gql == 3.0.0a5',
         'staticjinja',
+        'requests',
     ],
 )
