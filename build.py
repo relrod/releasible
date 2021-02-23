@@ -174,7 +174,7 @@ if __name__ == "__main__":
         outpath='site',
         contexts=[(r'.*\.html', base)],
     )
-    if sys.argv[1] == 'build':
+    if len(sys.argv) > 1 and sys.argv[1] == 'build':
         site.render(use_reloader=False)
     else:
         site.render(use_reloader=True)
