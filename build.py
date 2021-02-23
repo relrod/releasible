@@ -174,5 +174,7 @@ if __name__ == "__main__":
         outpath='site',
         contexts=[(r'.*\.html', base)],
     )
-    # enable automatic reloading
-    site.render(use_reloader=True)
+    if sys.argv[1] == 'build':
+        site.render(use_reloader=False)
+    else:
+        site.render(use_reloader=True)

@@ -4,10 +4,10 @@ on:
   push:
   pull_request:
   schedule:
-    - cron: 0 12 * * *
+    - cron: '*/10 * * * *'
 
 jobs:
-  tests:
+  test:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
@@ -28,3 +28,32 @@ jobs:
       - name: Run pytest
         run: |
           python3 -m pytest
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: true
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip3 install setuptools wheel
+          pip3 install -e .
+
+      - name: Build site
+        run: python3 build.py build
+        env:
+          GITHUB_TOKEN_RO: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.0.0
+        with:
+          branch: gh-pages
+          folder: site
