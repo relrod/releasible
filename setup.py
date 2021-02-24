@@ -13,7 +13,8 @@ setup(
         'arrow',
         'asyncio',
         'gql == 3.0.0a5',
-        'staticjinja',
         'requests',
+        'staticjinja',
+        'unidiff',
     ],
 )
