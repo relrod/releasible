@@ -47,7 +47,7 @@ async def test_prs_for_commit(finder):
     prs = await finder.prs_for_commit(
         '997b2d2a1955ccb4e70f805c18dc3e227e86c678')
     assert len(prs) == 1
-    assert prs[0]['number'] == 73467
+    assert prs[0].number == 73467
 
 @pytest.mark.vcr(filter_headers=['authorization'])
 @pytest.mark.asyncio
@@ -55,14 +55,14 @@ async def test_guess_original_pr(finder):
     # Has (#nnnnn) in title
     original_for_73544 = await finder.guess_original_pr(
         'https://github.com/ansible/ansible/pull/73544')
-    assert original_for_73544[0]['number'] == 73541
+    assert original_for_73544[0].number == 73541
 
     # Has a cherry-pick line
     original_for_73493 = await finder.guess_original_pr(
         'https://github.com/ansible/ansible/pull/73493')
-    assert original_for_73493[0]['number'] == 73487
+    assert original_for_73493[0].number == 73487
 
     # Has a "Backport of" link
     original_for_73067 = await finder.guess_original_pr(
         'https://github.com/ansible/ansible/pull/73067')
-    assert original_for_73067[0]['number'] == 55
+    assert original_for_73067[0].number == 55
