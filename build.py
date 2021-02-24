@@ -9,6 +9,7 @@ import sys
 
 from releasible.github import GitHubAPICall
 from releasible.backport import BackportFinder
+from releasible.model.pullrequest import Backport
 
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN_RO')
 VERSIONS = ['2.8', '2.9', '2.10']
@@ -31,110 +32,45 @@ async def ctx_aut(template):
     return {'jobs': jobs}
 
 async def ctx_backports(template):
-    # TODO: We need to unhardcode these:
     backports = {}
-    originals = {}
     aio_session = aiohttp.ClientSession()
     bf = BackportFinder(GITHUB_TOKEN, aio_session)
 
-    scores = {}
-    orig_scores = {}
-    max_score = 0
-    max_orig_score = 0
-
-    def score_pr(pr):
-        '''Assign a risk score to the given PR.'''
-        # If adding more metrics, add their max to max_score (or less to weigh
-        # them differently)
-        max_score = 50
-        score = 0
-        # This is all arbitrary, we just need to roughly assign a score.
-        comments = pr.get('comments', 0)
-        if comments > 5:
-            score += 10
-        else:
-            score += comments * 2
-
-        review_comments = pr.get('review_comments', 0)
-        if comments > 3:
-            score += 10
-        elif comments == 3:
-            score += 8
-        elif comments == 2:
-            score += 4
-        else:
-            score += 1
-
-        # This isn't out of 10, we intentionally weigh this less
-        lines_changed = abs(pr.get('additions', 0) + pr.get('deletions', 0))
-        if lines_changed < 10:
-            score += 1
-        elif lines_changed < 25:
-            score += 3
-        else:
-            score += 5
-
-        # This isn't out of 10, we intentionally weigh this less
-        files_changed = pr.get('changed_files', 0)
-        if files_changed < 3:
-            score += 1
-        elif files_changed < 5:
-            score += 3
-        else:
-            score += 5
-
-        # This isn't out of 10, we intentionally weigh this less
-        commits = pr.get('commits', 0)
-        if commits < 3:
-            score += commits
-        else:
-            score += 5
-
-        return score / max_score
-
-    def score_to_class(score):
-        if score > 80:
-            return 'danger'
-        elif score > 50:
-            return 'warning'
-        else:
-            return 'success'
+    max_risk = 0
+    max_orig_risk = 0
 
     for version in VERSIONS:
         prs = await bf.get_backports_for_version(version)
-        backports[version] = prs
+        backports[version] = []
 
         cors = [bf.guess_original_pr(pr) for pr in prs]
-        original_awaited = await asyncio.gather(*cors)
+        originals = await asyncio.gather(*cors)
+
+        # We need to bail out/error if this is never true, because otherwise
+        # we'd show PRs that belong to originals that don't make sense.
+        assert len(prs) == len(originals)
 
         for idx, pr in enumerate(prs):
-            score = score_pr(pr)
-            scores[pr['number']] = score
-            if score > max_score:
-                max_score = score
+            original = originals[idx]
+            if original:
+                original = original[0]
+            else:
+                original = None
+            bp = Backport(pr.pr, original)
+            backports[version].append(bp)
 
-            orig = original_awaited[idx]
-            if not orig:
-                continue
-            orig = orig[0]
-            originals[pr['number']] = orig
-            score = score_pr(orig)
-            orig_scores[pr['number']] = score
-            if score > max_orig_score:
-                max_orig_score = score
+            # While we're here track global max risks
+            if bp.risk > max_risk:
+                max_risk = bp.risk
 
-    for pr, score in scores.items():
-        scores[pr] = (score / max_score) * 100
-
-    for pr, score in orig_scores.items():
-        orig_scores[pr] = (score / max_orig_score) * 100
+            if bp.original is not None:
+                if bp.original.risk > max_orig_risk:
+                    max_orig_risk = bp.original.risk
 
     out = {
         'backports': backports,
-        'originals': originals,
-        'scores': scores,
-        'orig_scores': orig_scores,
-        'score_to_class': score_to_class,
+        'max_risk': max_risk,
+        'max_orig_risk': max_orig_risk,
     }
 
     await aio_session.close()

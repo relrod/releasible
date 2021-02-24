@@ -22,36 +22,36 @@
             <th scope="col">Rel. Churn</th>
           </tr>
         </thead>
-        {% for version, prs in backports.items() %}
+        {% for version, bps in backports.items() %}
           <tbody>
             <tr>
               <th scope="col" colspan="6">Version: {{ version }}</th>
             </tr>
-            {% for backport in prs %}
+            {% for bp in bps %}
               <tr>
-                <td><a href="{{ backport['html_url'] }}">{{ backport['title'] }}</a></td>
-                <td><a href="{{ backport['user']['html_url'] }}">@{{ backport['user']['login'] }}</a></td>
+                <td><a href="{{ bp.pr['html_url'] }}">{{ bp.pr['title'] }}</a></td>
+                <td><a href="{{ bp.pr['user']['html_url'] }}">@{{ bp.pr['user']['login'] }}</a></td>
                 <td>
                   <div class="progress">
-                    {% set score = scores[backport['number']] %}
-                    <div class="progress-bar bg-{{ score_to_class(score) }}" role="progressbar" style="width: {{ score }}%" aria-valuenow="{{ score }}" aria-valuemin="0" aria-valuemax="100"></div>
+                    {% set risk = bp.relative_risk(max_risk) %}
+                    <div class="progress-bar bg-{{ macros.risk_to_class(risk) }}" role="progressbar" style="width: {{ risk }}%" aria-valuenow="{{ risk }}" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </td>
-                {% if backport['number'] in originals %}
+                {% if bp.original %}
                   <td>
-                    <a href="{{ originals[backport['number']]['html_url'] }}">
-                      #{{ originals[backport['number']]['number'] }}
+                    <a href="{{ bp.original.pr['html_url'] }}">
+                      #{{ bp.original.pr.number }}
                     </a>
                   </td>
                   <td>
-                    <a href="{{ originals[backport['number']]['user']['html_url'] }}">
-                      @{{ originals[backport['number']]['user']['login'] }}
+                    <a href="{{ bp.original.pr['html_url'] }}">
+                      @{{ bp.original.pr['user']['login'] }}
                     </a>
                   </td>
                   <td>
                     <div class="progress">
-                      {% set score = orig_scores[backport['number']] %}
-                      <div class="progress-bar bg-{{ score_to_class(score) }}" role="progressbar" style="width: {{ score }}%" aria-valuenow="{{ score }}" aria-valuemin="0" aria-valuemax="100"></div>
+                      {% set risk = bp.original.relative_risk(max_orig_risk) %}
+                      <div class="progress-bar bg-{{ macros.risk_to_class(risk) }}" role="progressbar" style="width: {{ risk }}%" aria-valuenow="{{ risk }}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </td>
                 {% else %}

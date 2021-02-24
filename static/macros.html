@@ -9,3 +9,13 @@
     <span class="text-danger bi bi-exclamation-octagon-fill"></span>
   {% endif %}
 {% endmacro %}
+
+{%- macro risk_to_class(score) -%}
+  {%- if score > 80 -%}
+    danger
+  {%- elif score > 50 -%}
+    warning
+  {%- else -%}
+    success
+  {%- endif -%}
+{%- endmacro -%}

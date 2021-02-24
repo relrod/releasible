@@ -1,6 +1,7 @@
 import asyncio
 import re
 from releasible.github import GitHubAPICall
+from releasible.model.pullrequest import Backport, PullRequest
 
 PULL_URL_RE = re.compile(r'(?P<user>\S+)/(?P<repo>\S+)#(?P<ticket>\d+)')
 PULL_HTTP_URL_RE = re.compile(r'https?://(?:www\.|)github.com/(?P<user>\S+)/(?P<repo>\S+)/pull/(?P<ticket>\d+)')
@@ -118,12 +119,13 @@ class BackportFinder(GitHubAPICall):
         return await asyncio.gather(*cors)
 
 
-    async def get_pr(self, pr, allow_non_ansible_ansible=True):
-        return await self.get(
+    async def get_pr(self, pr, allow_non_ansible_ansible=True) -> PullRequest:
+        pr_dict = await self.get(
             normalize_pr_url(
                 pr,
                 allow_non_ansible_ansible=allow_non_ansible_ansible,
                 api=True))
+        return PullRequest(pr_dict)
 
     async def guess_original_pr(self, q):
         '''
@@ -145,9 +147,7 @@ class BackportFinder(GitHubAPICall):
         correctness is not guaranteed.
         '''
 
-        if isinstance(q, dict):
-            if 'title' not in q:
-                raise Exception('given dict was not valid PR: no "title" found')
+        if isinstance(q, PullRequest):
             pr = q
         else:
             pr = await self.get_pr(q)
@@ -155,7 +155,7 @@ class BackportFinder(GitHubAPICall):
         possibilities = []
 
         # 1. Try searching for it in the title.
-        title_search = PULL_BACKPORT_IN_TITLE.match(pr['title'])
+        title_search = PULL_BACKPORT_IN_TITLE.match(pr.pr['title'])
         if title_search:
             ticket = title_search.group('ticket1')
             if not ticket:
@@ -166,7 +166,7 @@ class BackportFinder(GitHubAPICall):
                 pass
 
         # 2. Search for clues in the body of the PR
-        body_lines = pr['body'].split('\n')
+        body_lines = pr.pr['body'].split('\n')
         for line in body_lines:
             # a. Try searching for a `git cherry-pick` line
             cherrypick = PULL_CHERRY_PICKED_FROM.match(line)
