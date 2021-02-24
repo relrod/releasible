@@ -1,17 +1,5 @@
 {% extends 'base.html' %}
 
-{% macro conclusion_to_icon(status, conclusion) %}
-  {% if status == 'queued' %}
-    <span class="text-primary bi bi-question-circle-fill"></span>
-  {% elif status == 'in_progress' %}
-    <span class="text-warning bi bi-hourglass-split"></span>
-  {% elif conclusion == 'success' %}
-    <span class="text-success bi bi-check-circle-fill"></span>
-  {% else %}
-    <span class="text-danger bi bi-exclamation-octagon-fill"></span>
-  {% endif %}
-{% endmacro %}
-
 {% block main %}
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2">Artifact Health (Release Artifact Testing)</h1>
@@ -33,7 +21,7 @@
       <tbody>
         {% for job in jobs %}
           <tr>
-            <td>{{ conclusion_to_icon(job['status'], job['conclusion']) }}</td>
+            <td>{{ macros.conclusion_to_icon(job['status'], job['conclusion']) }}</td>
             <th scope="row">
               <a href="{{ job['html_url'] }}">{{ job['name'] }}</a>
             </th>
