@@ -29,7 +29,12 @@
             </tr>
             {% for bp in bps %}
               <tr>
-                <td><a href="{{ bp.pr['html_url'] }}">{{ bp.pr['title'] }}</a></td>
+                <td>
+                  <a href="{{ bp.pr['html_url'] }}">{{ bp.pr['title'] }}</a>
+                  {% if bp.is_missing_changelog %}
+                    <span class="badge bg-warning text-dark">changelog</span>
+                  {% endif %}
+                </td>
                 <td><a href="{{ bp.pr['user']['html_url'] }}">@{{ bp.pr['user']['login'] }}</a></td>
                 <td>
                   <div class="progress">
