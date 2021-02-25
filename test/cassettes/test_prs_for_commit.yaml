@@ -35,7 +35,7 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 23 Feb 2021 00:09:30 GMT
+      - Thu, 25 Feb 2021 03:06:52 GMT
       Referrer-Policy:
       - origin-when-cross-origin, strict-origin-when-cross-origin
       Server:
@@ -56,19 +56,19 @@ interactions:
       X-GitHub-Media-Type:
       - github.cloak-preview, github.groot-preview; format=json
       X-GitHub-Request-Id:
-      - CD30:1608:3AE805A:5F0EA40:603447BA
+      - 8184:40B7:65331E:AC1F05:6037144C
       X-OAuth-Scopes:
-      - ''
+      - repo, workflow
       X-RateLimit-Limit:
       - '30'
       X-RateLimit-Remaining:
-      - '21'
+      - '29'
       X-RateLimit-Reset:
-      - '1614038992'
+      - '1614222472'
       X-XSS-Protection:
       - 1; mode=block
       x-ratelimit-used:
-      - '9'
+      - '1'
     status:
       code: 200
       message: OK
@@ -100,13 +100,13 @@ interactions:
         is a radically simple IT automation platform that makes your applications
         and systems easier to deploy. Avoid writing scripts or custom code to deploy
         and update your applications\u2014 automate in a language that approaches
-        plain English, using SSH, with no agents to install on remote systems.\",\"fork\":true,\"url\":\"https://api.github.com/repos/samdoran/ansible\",\"forks_url\":\"https://api.github.com/repos/samdoran/ansible/forks\",\"keys_url\":\"https://api.github.com/repos/samdoran/ansible/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/samdoran/ansible/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/samdoran/ansible/teams\",\"hooks_url\":\"https://api.github.com/repos/samdoran/ansible/hooks\",\"issue_events_url\":\"https://api.github.com/repos/samdoran/ansible/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/samdoran/ansible/events\",\"assignees_url\":\"https://api.github.com/repos/samdoran/ansible/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/samdoran/ansible/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/samdoran/ansible/tags\",\"blobs_url\":\"https://api.github.com/repos/samdoran/ansible/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/samdoran/ansible/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/samdoran/ansible/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/samdoran/ansible/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/samdoran/ansible/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/samdoran/ansible/languages\",\"stargazers_url\":\"https://api.github.com/repos/samdoran/ansible/stargazers\",\"contributors_url\":\"https://api.github.com/repos/samdoran/ansible/contributors\",\"subscribers_url\":\"https://api.github.com/repos/samdoran/ansible/subscribers\",\"subscription_url\":\"https://api.github.com/repos/samdoran/ansible/subscription\",\"commits_url\":\"https://api.github.com/repos/samdoran/ansible/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/samdoran/ansible/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/samdoran/ansible/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/samdoran/ansible/issues/comments{/number}\",\"contents_url\":\"https://api.github.com/repos/samdoran/ansible/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/samdoran/ansible/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/samdoran/ansible/merges\",\"archive_url\":\"https://api.github.com/repos/samdoran/ansible/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/samdoran/ansible/downloads\",\"issues_url\":\"https://api.github.com/repos/samdoran/ansible/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/samdoran/ansible/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/samdoran/ansible/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/samdoran/ansible/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/samdoran/ansible/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/samdoran/ansible/releases{/id}\",\"deployments_url\":\"https://api.github.com/repos/samdoran/ansible/deployments\",\"created_at\":\"2016-10-12T17:53:34Z\",\"updated_at\":\"2020-11-19T13:40:09Z\",\"pushed_at\":\"2021-02-22T20:09:59Z\",\"git_url\":\"git://github.com/samdoran/ansible.git\",\"ssh_url\":\"git@github.com:samdoran/ansible.git\",\"clone_url\":\"https://github.com/samdoran/ansible.git\",\"svn_url\":\"https://github.com/samdoran/ansible\",\"homepage\":\"http://ansible.com/\",\"size\":187216,\"stargazers_count\":1,\"watchers_count\":1,\"language\":\"Python\",\"has_issues\":false,\"has_projects\":true,\"has_downloads\":true,\"has_wiki\":false,\"has_pages\":false,\"forks_count\":1,\"mirror_url\":null,\"archived\":false,\"disabled\":false,\"open_issues_count\":0,\"license\":{\"key\":\"gpl-3.0\",\"name\":\"GNU
+        plain English, using SSH, with no agents to install on remote systems.\",\"fork\":true,\"url\":\"https://api.github.com/repos/samdoran/ansible\",\"forks_url\":\"https://api.github.com/repos/samdoran/ansible/forks\",\"keys_url\":\"https://api.github.com/repos/samdoran/ansible/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/samdoran/ansible/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/samdoran/ansible/teams\",\"hooks_url\":\"https://api.github.com/repos/samdoran/ansible/hooks\",\"issue_events_url\":\"https://api.github.com/repos/samdoran/ansible/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/samdoran/ansible/events\",\"assignees_url\":\"https://api.github.com/repos/samdoran/ansible/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/samdoran/ansible/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/samdoran/ansible/tags\",\"blobs_url\":\"https://api.github.com/repos/samdoran/ansible/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/samdoran/ansible/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/samdoran/ansible/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/samdoran/ansible/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/samdoran/ansible/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/samdoran/ansible/languages\",\"stargazers_url\":\"https://api.github.com/repos/samdoran/ansible/stargazers\",\"contributors_url\":\"https://api.github.com/repos/samdoran/ansible/contributors\",\"subscribers_url\":\"https://api.github.com/repos/samdoran/ansible/subscribers\",\"subscription_url\":\"https://api.github.com/repos/samdoran/ansible/subscription\",\"commits_url\":\"https://api.github.com/repos/samdoran/ansible/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/samdoran/ansible/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/samdoran/ansible/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/samdoran/ansible/issues/comments{/number}\",\"contents_url\":\"https://api.github.com/repos/samdoran/ansible/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/samdoran/ansible/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/samdoran/ansible/merges\",\"archive_url\":\"https://api.github.com/repos/samdoran/ansible/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/samdoran/ansible/downloads\",\"issues_url\":\"https://api.github.com/repos/samdoran/ansible/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/samdoran/ansible/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/samdoran/ansible/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/samdoran/ansible/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/samdoran/ansible/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/samdoran/ansible/releases{/id}\",\"deployments_url\":\"https://api.github.com/repos/samdoran/ansible/deployments\",\"created_at\":\"2016-10-12T17:53:34Z\",\"updated_at\":\"2020-11-19T13:40:09Z\",\"pushed_at\":\"2021-02-24T22:39:54Z\",\"git_url\":\"git://github.com/samdoran/ansible.git\",\"ssh_url\":\"git@github.com:samdoran/ansible.git\",\"clone_url\":\"https://github.com/samdoran/ansible.git\",\"svn_url\":\"https://github.com/samdoran/ansible\",\"homepage\":\"http://ansible.com/\",\"size\":187248,\"stargazers_count\":1,\"watchers_count\":1,\"language\":\"Python\",\"has_issues\":false,\"has_projects\":true,\"has_downloads\":true,\"has_wiki\":false,\"has_pages\":false,\"forks_count\":1,\"mirror_url\":null,\"archived\":false,\"disabled\":false,\"open_issues_count\":0,\"license\":{\"key\":\"gpl-3.0\",\"name\":\"GNU
         General Public License v3.0\",\"spdx_id\":\"GPL-3.0\",\"url\":\"https://api.github.com/licenses/gpl-3.0\",\"node_id\":\"MDc6TGljZW5zZTk=\"},\"forks\":1,\"open_issues\":0,\"watchers\":1,\"default_branch\":\"devel\"}},\"base\":{\"label\":\"ansible:devel\",\"ref\":\"devel\",\"sha\":\"fce22529c4f5a7293f12979e7cb45f5ed9f6e9f7\",\"user\":{\"login\":\"ansible\",\"id\":1507452,\"node_id\":\"MDEyOk9yZ2FuaXphdGlvbjE1MDc0NTI=\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/1507452?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/ansible\",\"html_url\":\"https://github.com/ansible\",\"followers_url\":\"https://api.github.com/users/ansible/followers\",\"following_url\":\"https://api.github.com/users/ansible/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/ansible/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/ansible/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/ansible/subscriptions\",\"organizations_url\":\"https://api.github.com/users/ansible/orgs\",\"repos_url\":\"https://api.github.com/users/ansible/repos\",\"events_url\":\"https://api.github.com/users/ansible/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/ansible/received_events\",\"type\":\"Organization\",\"site_admin\":false},\"repo\":{\"id\":3638964,\"node_id\":\"MDEwOlJlcG9zaXRvcnkzNjM4OTY0\",\"name\":\"ansible\",\"full_name\":\"ansible/ansible\",\"private\":false,\"owner\":{\"login\":\"ansible\",\"id\":1507452,\"node_id\":\"MDEyOk9yZ2FuaXphdGlvbjE1MDc0NTI=\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/1507452?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/ansible\",\"html_url\":\"https://github.com/ansible\",\"followers_url\":\"https://api.github.com/users/ansible/followers\",\"following_url\":\"https://api.github.com/users/ansible/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/ansible/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/ansible/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/ansible/subscriptions\",\"organizations_url\":\"https://api.github.com/users/ansible/orgs\",\"repos_url\":\"https://api.github.com/users/ansible/repos\",\"events_url\":\"https://api.github.com/users/ansible/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/ansible/received_events\",\"type\":\"Organization\",\"site_admin\":false},\"html_url\":\"https://github.com/ansible/ansible\",\"description\":\"Ansible
         is a radically simple IT automation platform that makes your applications
         and systems easier to deploy and maintain. Automate everything from code deployment
         to network configuration to cloud management, in a language that approaches
-        plain English, using SSH, with no agents to install on remote systems. https://docs.ansible.com.\",\"fork\":false,\"url\":\"https://api.github.com/repos/ansible/ansible\",\"forks_url\":\"https://api.github.com/repos/ansible/ansible/forks\",\"keys_url\":\"https://api.github.com/repos/ansible/ansible/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/ansible/ansible/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/ansible/ansible/teams\",\"hooks_url\":\"https://api.github.com/repos/ansible/ansible/hooks\",\"issue_events_url\":\"https://api.github.com/repos/ansible/ansible/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/ansible/ansible/events\",\"assignees_url\":\"https://api.github.com/repos/ansible/ansible/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/ansible/ansible/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/ansible/ansible/tags\",\"blobs_url\":\"https://api.github.com/repos/ansible/ansible/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/ansible/ansible/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/ansible/ansible/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/ansible/ansible/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/ansible/ansible/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/ansible/ansible/languages\",\"stargazers_url\":\"https://api.github.com/repos/ansible/ansible/stargazers\",\"contributors_url\":\"https://api.github.com/repos/ansible/ansible/contributors\",\"subscribers_url\":\"https://api.github.com/repos/ansible/ansible/subscribers\",\"subscription_url\":\"https://api.github.com/repos/ansible/ansible/subscription\",\"commits_url\":\"https://api.github.com/repos/ansible/ansible/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/ansible/ansible/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/ansible/ansible/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/ansible/ansible/issues/comments{/number}\",\"contents_url\":\"https://api.github.com/repos/ansible/ansible/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/ansible/ansible/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/ansible/ansible/merges\",\"archive_url\":\"https://api.github.com/repos/ansible/ansible/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/ansible/ansible/downloads\",\"issues_url\":\"https://api.github.com/repos/ansible/ansible/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/ansible/ansible/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/ansible/ansible/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/ansible/ansible/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/ansible/ansible/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/ansible/ansible/releases{/id}\",\"deployments_url\":\"https://api.github.com/repos/ansible/ansible/deployments\",\"created_at\":\"2012-03-06T14:58:02Z\",\"updated_at\":\"2021-02-22T23:41:04Z\",\"pushed_at\":\"2021-02-22T22:38:38Z\",\"git_url\":\"git://github.com/ansible/ansible.git\",\"ssh_url\":\"org-1507452@github.com:ansible/ansible.git\",\"clone_url\":\"https://github.com/ansible/ansible.git\",\"svn_url\":\"https://github.com/ansible/ansible\",\"homepage\":\"https://www.ansible.com/\",\"size\":194850,\"stargazers_count\":46974,\"watchers_count\":46974,\"language\":\"Python\",\"has_issues\":true,\"has_projects\":true,\"has_downloads\":true,\"has_wiki\":false,\"has_pages\":false,\"forks_count\":20293,\"mirror_url\":null,\"archived\":false,\"disabled\":false,\"open_issues_count\":1889,\"license\":{\"key\":\"gpl-3.0\",\"name\":\"GNU
-        General Public License v3.0\",\"spdx_id\":\"GPL-3.0\",\"url\":\"https://api.github.com/licenses/gpl-3.0\",\"node_id\":\"MDc6TGljZW5zZTk=\"},\"forks\":20293,\"open_issues\":1889,\"watchers\":46974,\"default_branch\":\"devel\"}},\"_links\":{\"self\":{\"href\":\"https://api.github.com/repos/ansible/ansible/pulls/73467\"},\"html\":{\"href\":\"https://github.com/ansible/ansible/pull/73467\"},\"issue\":{\"href\":\"https://api.github.com/repos/ansible/ansible/issues/73467\"},\"comments\":{\"href\":\"https://api.github.com/repos/ansible/ansible/issues/73467/comments\"},\"review_comments\":{\"href\":\"https://api.github.com/repos/ansible/ansible/pulls/73467/comments\"},\"review_comment\":{\"href\":\"https://api.github.com/repos/ansible/ansible/pulls/comments{/number}\"},\"commits\":{\"href\":\"https://api.github.com/repos/ansible/ansible/pulls/73467/commits\"},\"statuses\":{\"href\":\"https://api.github.com/repos/ansible/ansible/statuses/e3c500fb74d1f71242f6e0ac9b9a66eb38786aad\"}},\"author_association\":\"MEMBER\",\"auto_merge\":null,\"active_lock_reason\":null}]"
+        plain English, using SSH, with no agents to install on remote systems. https://docs.ansible.com.\",\"fork\":false,\"url\":\"https://api.github.com/repos/ansible/ansible\",\"forks_url\":\"https://api.github.com/repos/ansible/ansible/forks\",\"keys_url\":\"https://api.github.com/repos/ansible/ansible/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/ansible/ansible/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/ansible/ansible/teams\",\"hooks_url\":\"https://api.github.com/repos/ansible/ansible/hooks\",\"issue_events_url\":\"https://api.github.com/repos/ansible/ansible/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/ansible/ansible/events\",\"assignees_url\":\"https://api.github.com/repos/ansible/ansible/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/ansible/ansible/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/ansible/ansible/tags\",\"blobs_url\":\"https://api.github.com/repos/ansible/ansible/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/ansible/ansible/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/ansible/ansible/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/ansible/ansible/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/ansible/ansible/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/ansible/ansible/languages\",\"stargazers_url\":\"https://api.github.com/repos/ansible/ansible/stargazers\",\"contributors_url\":\"https://api.github.com/repos/ansible/ansible/contributors\",\"subscribers_url\":\"https://api.github.com/repos/ansible/ansible/subscribers\",\"subscription_url\":\"https://api.github.com/repos/ansible/ansible/subscription\",\"commits_url\":\"https://api.github.com/repos/ansible/ansible/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/ansible/ansible/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/ansible/ansible/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/ansible/ansible/issues/comments{/number}\",\"contents_url\":\"https://api.github.com/repos/ansible/ansible/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/ansible/ansible/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/ansible/ansible/merges\",\"archive_url\":\"https://api.github.com/repos/ansible/ansible/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/ansible/ansible/downloads\",\"issues_url\":\"https://api.github.com/repos/ansible/ansible/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/ansible/ansible/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/ansible/ansible/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/ansible/ansible/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/ansible/ansible/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/ansible/ansible/releases{/id}\",\"deployments_url\":\"https://api.github.com/repos/ansible/ansible/deployments\",\"created_at\":\"2012-03-06T14:58:02Z\",\"updated_at\":\"2021-02-25T00:16:06Z\",\"pushed_at\":\"2021-02-25T00:21:00Z\",\"git_url\":\"git://github.com/ansible/ansible.git\",\"ssh_url\":\"org-1507452@github.com:ansible/ansible.git\",\"clone_url\":\"https://github.com/ansible/ansible.git\",\"svn_url\":\"https://github.com/ansible/ansible\",\"homepage\":\"https://www.ansible.com/\",\"size\":194935,\"stargazers_count\":47012,\"watchers_count\":47012,\"language\":\"Python\",\"has_issues\":true,\"has_projects\":true,\"has_downloads\":true,\"has_wiki\":false,\"has_pages\":false,\"forks_count\":20304,\"mirror_url\":null,\"archived\":false,\"disabled\":false,\"open_issues_count\":1887,\"license\":{\"key\":\"gpl-3.0\",\"name\":\"GNU
+        General Public License v3.0\",\"spdx_id\":\"GPL-3.0\",\"url\":\"https://api.github.com/licenses/gpl-3.0\",\"node_id\":\"MDc6TGljZW5zZTk=\"},\"forks\":20304,\"open_issues\":1887,\"watchers\":47012,\"default_branch\":\"devel\"}},\"_links\":{\"self\":{\"href\":\"https://api.github.com/repos/ansible/ansible/pulls/73467\"},\"html\":{\"href\":\"https://github.com/ansible/ansible/pull/73467\"},\"issue\":{\"href\":\"https://api.github.com/repos/ansible/ansible/issues/73467\"},\"comments\":{\"href\":\"https://api.github.com/repos/ansible/ansible/issues/73467/comments\"},\"review_comments\":{\"href\":\"https://api.github.com/repos/ansible/ansible/pulls/73467/comments\"},\"review_comment\":{\"href\":\"https://api.github.com/repos/ansible/ansible/pulls/comments{/number}\"},\"commits\":{\"href\":\"https://api.github.com/repos/ansible/ansible/pulls/73467/commits\"},\"statuses\":{\"href\":\"https://api.github.com/repos/ansible/ansible/statuses/e3c500fb74d1f71242f6e0ac9b9a66eb38786aad\"}},\"author_association\":\"MEMBER\",\"auto_merge\":null,\"active_lock_reason\":null}]"
     headers:
       Access-Control-Allow-Origin:
       - '*'
@@ -123,9 +123,9 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 23 Feb 2021 00:09:31 GMT
-      ETag:
-      - W/"389164ce0b9a1a387d60b0de86af13ec4bfe809b4070826d5fce5a61802c6611"
+      - Thu, 25 Feb 2021 03:06:52 GMT
+      Etag:
+      - W/"237825e08343b328cdcd49829e0116fb6d1f19b3e1a0895beddc838b70524e07"
       Referrer-Policy:
       - origin-when-cross-origin, strict-origin-when-cross-origin
       Server:
@@ -146,19 +146,19 @@ interactions:
       X-GitHub-Media-Type:
       - github.cloak-preview, github.groot-preview; format=json
       X-GitHub-Request-Id:
-      - CD30:1608:3AE80BC:5F0EABB:603447BA
+      - 8184:40B7:65333C:AC1F4A:6037144C
       X-OAuth-Scopes:
-      - ''
+      - repo, workflow
       X-RateLimit-Limit:
       - '5000'
       X-RateLimit-Remaining:
-      - '4934'
+      - '4205'
       X-RateLimit-Reset:
-      - '1614042531'
+      - '1614224282'
       X-XSS-Protection:
       - 1; mode=block
       x-ratelimit-used:
-      - '66'
+      - '795'
     status:
       code: 200
       message: OK
@@ -190,13 +190,13 @@ interactions:
         is a radically simple IT automation platform that makes your applications
         and systems easier to deploy. Avoid writing scripts or custom code to deploy
         and update your applications\u2014 automate in a language that approaches
-        plain English, using SSH, with no agents to install on remote systems.\",\"fork\":true,\"url\":\"https://api.github.com/repos/samdoran/ansible\",\"forks_url\":\"https://api.github.com/repos/samdoran/ansible/forks\",\"keys_url\":\"https://api.github.com/repos/samdoran/ansible/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/samdoran/ansible/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/samdoran/ansible/teams\",\"hooks_url\":\"https://api.github.com/repos/samdoran/ansible/hooks\",\"issue_events_url\":\"https://api.github.com/repos/samdoran/ansible/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/samdoran/ansible/events\",\"assignees_url\":\"https://api.github.com/repos/samdoran/ansible/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/samdoran/ansible/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/samdoran/ansible/tags\",\"blobs_url\":\"https://api.github.com/repos/samdoran/ansible/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/samdoran/ansible/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/samdoran/ansible/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/samdoran/ansible/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/samdoran/ansible/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/samdoran/ansible/languages\",\"stargazers_url\":\"https://api.github.com/repos/samdoran/ansible/stargazers\",\"contributors_url\":\"https://api.github.com/repos/samdoran/ansible/contributors\",\"subscribers_url\":\"https://api.github.com/repos/samdoran/ansible/subscribers\",\"subscription_url\":\"https://api.github.com/repos/samdoran/ansible/subscription\",\"commits_url\":\"https://api.github.com/repos/samdoran/ansible/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/samdoran/ansible/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/samdoran/ansible/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/samdoran/ansible/issues/comments{/number}\",\"contents_url\":\"https://api.github.com/repos/samdoran/ansible/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/samdoran/ansible/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/samdoran/ansible/merges\",\"archive_url\":\"https://api.github.com/repos/samdoran/ansible/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/samdoran/ansible/downloads\",\"issues_url\":\"https://api.github.com/repos/samdoran/ansible/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/samdoran/ansible/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/samdoran/ansible/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/samdoran/ansible/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/samdoran/ansible/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/samdoran/ansible/releases{/id}\",\"deployments_url\":\"https://api.github.com/repos/samdoran/ansible/deployments\",\"created_at\":\"2016-10-12T17:53:34Z\",\"updated_at\":\"2020-11-19T13:40:09Z\",\"pushed_at\":\"2021-02-22T20:09:59Z\",\"git_url\":\"git://github.com/samdoran/ansible.git\",\"ssh_url\":\"git@github.com:samdoran/ansible.git\",\"clone_url\":\"https://github.com/samdoran/ansible.git\",\"svn_url\":\"https://github.com/samdoran/ansible\",\"homepage\":\"http://ansible.com/\",\"size\":187216,\"stargazers_count\":1,\"watchers_count\":1,\"language\":\"Python\",\"has_issues\":false,\"has_projects\":true,\"has_downloads\":true,\"has_wiki\":false,\"has_pages\":false,\"forks_count\":1,\"mirror_url\":null,\"archived\":false,\"disabled\":false,\"open_issues_count\":0,\"license\":{\"key\":\"gpl-3.0\",\"name\":\"GNU
+        plain English, using SSH, with no agents to install on remote systems.\",\"fork\":true,\"url\":\"https://api.github.com/repos/samdoran/ansible\",\"forks_url\":\"https://api.github.com/repos/samdoran/ansible/forks\",\"keys_url\":\"https://api.github.com/repos/samdoran/ansible/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/samdoran/ansible/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/samdoran/ansible/teams\",\"hooks_url\":\"https://api.github.com/repos/samdoran/ansible/hooks\",\"issue_events_url\":\"https://api.github.com/repos/samdoran/ansible/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/samdoran/ansible/events\",\"assignees_url\":\"https://api.github.com/repos/samdoran/ansible/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/samdoran/ansible/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/samdoran/ansible/tags\",\"blobs_url\":\"https://api.github.com/repos/samdoran/ansible/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/samdoran/ansible/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/samdoran/ansible/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/samdoran/ansible/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/samdoran/ansible/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/samdoran/ansible/languages\",\"stargazers_url\":\"https://api.github.com/repos/samdoran/ansible/stargazers\",\"contributors_url\":\"https://api.github.com/repos/samdoran/ansible/contributors\",\"subscribers_url\":\"https://api.github.com/repos/samdoran/ansible/subscribers\",\"subscription_url\":\"https://api.github.com/repos/samdoran/ansible/subscription\",\"commits_url\":\"https://api.github.com/repos/samdoran/ansible/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/samdoran/ansible/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/samdoran/ansible/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/samdoran/ansible/issues/comments{/number}\",\"contents_url\":\"https://api.github.com/repos/samdoran/ansible/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/samdoran/ansible/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/samdoran/ansible/merges\",\"archive_url\":\"https://api.github.com/repos/samdoran/ansible/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/samdoran/ansible/downloads\",\"issues_url\":\"https://api.github.com/repos/samdoran/ansible/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/samdoran/ansible/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/samdoran/ansible/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/samdoran/ansible/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/samdoran/ansible/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/samdoran/ansible/releases{/id}\",\"deployments_url\":\"https://api.github.com/repos/samdoran/ansible/deployments\",\"created_at\":\"2016-10-12T17:53:34Z\",\"updated_at\":\"2020-11-19T13:40:09Z\",\"pushed_at\":\"2021-02-24T22:39:54Z\",\"git_url\":\"git://github.com/samdoran/ansible.git\",\"ssh_url\":\"git@github.com:samdoran/ansible.git\",\"clone_url\":\"https://github.com/samdoran/ansible.git\",\"svn_url\":\"https://github.com/samdoran/ansible\",\"homepage\":\"http://ansible.com/\",\"size\":187248,\"stargazers_count\":1,\"watchers_count\":1,\"language\":\"Python\",\"has_issues\":false,\"has_projects\":true,\"has_downloads\":true,\"has_wiki\":false,\"has_pages\":false,\"forks_count\":1,\"mirror_url\":null,\"archived\":false,\"disabled\":false,\"open_issues_count\":0,\"license\":{\"key\":\"gpl-3.0\",\"name\":\"GNU
         General Public License v3.0\",\"spdx_id\":\"GPL-3.0\",\"url\":\"https://api.github.com/licenses/gpl-3.0\",\"node_id\":\"MDc6TGljZW5zZTk=\"},\"forks\":1,\"open_issues\":0,\"watchers\":1,\"default_branch\":\"devel\"}},\"base\":{\"label\":\"ansible:devel\",\"ref\":\"devel\",\"sha\":\"fce22529c4f5a7293f12979e7cb45f5ed9f6e9f7\",\"user\":{\"login\":\"ansible\",\"id\":1507452,\"node_id\":\"MDEyOk9yZ2FuaXphdGlvbjE1MDc0NTI=\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/1507452?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/ansible\",\"html_url\":\"https://github.com/ansible\",\"followers_url\":\"https://api.github.com/users/ansible/followers\",\"following_url\":\"https://api.github.com/users/ansible/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/ansible/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/ansible/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/ansible/subscriptions\",\"organizations_url\":\"https://api.github.com/users/ansible/orgs\",\"repos_url\":\"https://api.github.com/users/ansible/repos\",\"events_url\":\"https://api.github.com/users/ansible/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/ansible/received_events\",\"type\":\"Organization\",\"site_admin\":false},\"repo\":{\"id\":3638964,\"node_id\":\"MDEwOlJlcG9zaXRvcnkzNjM4OTY0\",\"name\":\"ansible\",\"full_name\":\"ansible/ansible\",\"private\":false,\"owner\":{\"login\":\"ansible\",\"id\":1507452,\"node_id\":\"MDEyOk9yZ2FuaXphdGlvbjE1MDc0NTI=\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/1507452?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/ansible\",\"html_url\":\"https://github.com/ansible\",\"followers_url\":\"https://api.github.com/users/ansible/followers\",\"following_url\":\"https://api.github.com/users/ansible/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/ansible/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/ansible/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/ansible/subscriptions\",\"organizations_url\":\"https://api.github.com/users/ansible/orgs\",\"repos_url\":\"https://api.github.com/users/ansible/repos\",\"events_url\":\"https://api.github.com/users/ansible/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/ansible/received_events\",\"type\":\"Organization\",\"site_admin\":false},\"html_url\":\"https://github.com/ansible/ansible\",\"description\":\"Ansible
         is a radically simple IT automation platform that makes your applications
         and systems easier to deploy and maintain. Automate everything from code deployment
         to network configuration to cloud management, in a language that approaches
-        plain English, using SSH, with no agents to install on remote systems. https://docs.ansible.com.\",\"fork\":false,\"url\":\"https://api.github.com/repos/ansible/ansible\",\"forks_url\":\"https://api.github.com/repos/ansible/ansible/forks\",\"keys_url\":\"https://api.github.com/repos/ansible/ansible/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/ansible/ansible/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/ansible/ansible/teams\",\"hooks_url\":\"https://api.github.com/repos/ansible/ansible/hooks\",\"issue_events_url\":\"https://api.github.com/repos/ansible/ansible/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/ansible/ansible/events\",\"assignees_url\":\"https://api.github.com/repos/ansible/ansible/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/ansible/ansible/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/ansible/ansible/tags\",\"blobs_url\":\"https://api.github.com/repos/ansible/ansible/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/ansible/ansible/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/ansible/ansible/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/ansible/ansible/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/ansible/ansible/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/ansible/ansible/languages\",\"stargazers_url\":\"https://api.github.com/repos/ansible/ansible/stargazers\",\"contributors_url\":\"https://api.github.com/repos/ansible/ansible/contributors\",\"subscribers_url\":\"https://api.github.com/repos/ansible/ansible/subscribers\",\"subscription_url\":\"https://api.github.com/repos/ansible/ansible/subscription\",\"commits_url\":\"https://api.github.com/repos/ansible/ansible/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/ansible/ansible/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/ansible/ansible/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/ansible/ansible/issues/comments{/number}\",\"contents_url\":\"https://api.github.com/repos/ansible/ansible/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/ansible/ansible/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/ansible/ansible/merges\",\"archive_url\":\"https://api.github.com/repos/ansible/ansible/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/ansible/ansible/downloads\",\"issues_url\":\"https://api.github.com/repos/ansible/ansible/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/ansible/ansible/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/ansible/ansible/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/ansible/ansible/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/ansible/ansible/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/ansible/ansible/releases{/id}\",\"deployments_url\":\"https://api.github.com/repos/ansible/ansible/deployments\",\"created_at\":\"2012-03-06T14:58:02Z\",\"updated_at\":\"2021-02-22T23:41:04Z\",\"pushed_at\":\"2021-02-22T22:38:38Z\",\"git_url\":\"git://github.com/ansible/ansible.git\",\"ssh_url\":\"org-1507452@github.com:ansible/ansible.git\",\"clone_url\":\"https://github.com/ansible/ansible.git\",\"svn_url\":\"https://github.com/ansible/ansible\",\"homepage\":\"https://www.ansible.com/\",\"size\":194850,\"stargazers_count\":46974,\"watchers_count\":46974,\"language\":\"Python\",\"has_issues\":true,\"has_projects\":true,\"has_downloads\":true,\"has_wiki\":false,\"has_pages\":false,\"forks_count\":20293,\"mirror_url\":null,\"archived\":false,\"disabled\":false,\"open_issues_count\":1889,\"license\":{\"key\":\"gpl-3.0\",\"name\":\"GNU
-        General Public License v3.0\",\"spdx_id\":\"GPL-3.0\",\"url\":\"https://api.github.com/licenses/gpl-3.0\",\"node_id\":\"MDc6TGljZW5zZTk=\"},\"forks\":20293,\"open_issues\":1889,\"watchers\":46974,\"default_branch\":\"devel\"}},\"_links\":{\"self\":{\"href\":\"https://api.github.com/repos/ansible/ansible/pulls/73467\"},\"html\":{\"href\":\"https://github.com/ansible/ansible/pull/73467\"},\"issue\":{\"href\":\"https://api.github.com/repos/ansible/ansible/issues/73467\"},\"comments\":{\"href\":\"https://api.github.com/repos/ansible/ansible/issues/73467/comments\"},\"review_comments\":{\"href\":\"https://api.github.com/repos/ansible/ansible/pulls/73467/comments\"},\"review_comment\":{\"href\":\"https://api.github.com/repos/ansible/ansible/pulls/comments{/number}\"},\"commits\":{\"href\":\"https://api.github.com/repos/ansible/ansible/pulls/73467/commits\"},\"statuses\":{\"href\":\"https://api.github.com/repos/ansible/ansible/statuses/e3c500fb74d1f71242f6e0ac9b9a66eb38786aad\"}},\"author_association\":\"MEMBER\",\"auto_merge\":null,\"active_lock_reason\":null,\"merged\":true,\"mergeable\":null,\"rebaseable\":null,\"mergeable_state\":\"unknown\",\"merged_by\":{\"login\":\"mattclay\",\"id\":806360,\"node_id\":\"MDQ6VXNlcjgwNjM2MA==\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/806360?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/mattclay\",\"html_url\":\"https://github.com/mattclay\",\"followers_url\":\"https://api.github.com/users/mattclay/followers\",\"following_url\":\"https://api.github.com/users/mattclay/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/mattclay/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/mattclay/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/mattclay/subscriptions\",\"organizations_url\":\"https://api.github.com/users/mattclay/orgs\",\"repos_url\":\"https://api.github.com/users/mattclay/repos\",\"events_url\":\"https://api.github.com/users/mattclay/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/mattclay/received_events\",\"type\":\"User\",\"site_admin\":false},\"comments\":0,\"review_comments\":1,\"maintainer_can_modify\":false,\"commits\":7,\"additions\":138,\"deletions\":84,\"changed_files\":14}"
+        plain English, using SSH, with no agents to install on remote systems. https://docs.ansible.com.\",\"fork\":false,\"url\":\"https://api.github.com/repos/ansible/ansible\",\"forks_url\":\"https://api.github.com/repos/ansible/ansible/forks\",\"keys_url\":\"https://api.github.com/repos/ansible/ansible/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/ansible/ansible/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/ansible/ansible/teams\",\"hooks_url\":\"https://api.github.com/repos/ansible/ansible/hooks\",\"issue_events_url\":\"https://api.github.com/repos/ansible/ansible/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/ansible/ansible/events\",\"assignees_url\":\"https://api.github.com/repos/ansible/ansible/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/ansible/ansible/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/ansible/ansible/tags\",\"blobs_url\":\"https://api.github.com/repos/ansible/ansible/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/ansible/ansible/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/ansible/ansible/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/ansible/ansible/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/ansible/ansible/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/ansible/ansible/languages\",\"stargazers_url\":\"https://api.github.com/repos/ansible/ansible/stargazers\",\"contributors_url\":\"https://api.github.com/repos/ansible/ansible/contributors\",\"subscribers_url\":\"https://api.github.com/repos/ansible/ansible/subscribers\",\"subscription_url\":\"https://api.github.com/repos/ansible/ansible/subscription\",\"commits_url\":\"https://api.github.com/repos/ansible/ansible/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/ansible/ansible/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/ansible/ansible/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/ansible/ansible/issues/comments{/number}\",\"contents_url\":\"https://api.github.com/repos/ansible/ansible/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/ansible/ansible/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/ansible/ansible/merges\",\"archive_url\":\"https://api.github.com/repos/ansible/ansible/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/ansible/ansible/downloads\",\"issues_url\":\"https://api.github.com/repos/ansible/ansible/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/ansible/ansible/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/ansible/ansible/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/ansible/ansible/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/ansible/ansible/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/ansible/ansible/releases{/id}\",\"deployments_url\":\"https://api.github.com/repos/ansible/ansible/deployments\",\"created_at\":\"2012-03-06T14:58:02Z\",\"updated_at\":\"2021-02-25T00:16:06Z\",\"pushed_at\":\"2021-02-25T00:21:00Z\",\"git_url\":\"git://github.com/ansible/ansible.git\",\"ssh_url\":\"org-1507452@github.com:ansible/ansible.git\",\"clone_url\":\"https://github.com/ansible/ansible.git\",\"svn_url\":\"https://github.com/ansible/ansible\",\"homepage\":\"https://www.ansible.com/\",\"size\":194935,\"stargazers_count\":47012,\"watchers_count\":47012,\"language\":\"Python\",\"has_issues\":true,\"has_projects\":true,\"has_downloads\":true,\"has_wiki\":false,\"has_pages\":false,\"forks_count\":20304,\"mirror_url\":null,\"archived\":false,\"disabled\":false,\"open_issues_count\":1887,\"license\":{\"key\":\"gpl-3.0\",\"name\":\"GNU
+        General Public License v3.0\",\"spdx_id\":\"GPL-3.0\",\"url\":\"https://api.github.com/licenses/gpl-3.0\",\"node_id\":\"MDc6TGljZW5zZTk=\"},\"forks\":20304,\"open_issues\":1887,\"watchers\":47012,\"default_branch\":\"devel\"}},\"_links\":{\"self\":{\"href\":\"https://api.github.com/repos/ansible/ansible/pulls/73467\"},\"html\":{\"href\":\"https://github.com/ansible/ansible/pull/73467\"},\"issue\":{\"href\":\"https://api.github.com/repos/ansible/ansible/issues/73467\"},\"comments\":{\"href\":\"https://api.github.com/repos/ansible/ansible/issues/73467/comments\"},\"review_comments\":{\"href\":\"https://api.github.com/repos/ansible/ansible/pulls/73467/comments\"},\"review_comment\":{\"href\":\"https://api.github.com/repos/ansible/ansible/pulls/comments{/number}\"},\"commits\":{\"href\":\"https://api.github.com/repos/ansible/ansible/pulls/73467/commits\"},\"statuses\":{\"href\":\"https://api.github.com/repos/ansible/ansible/statuses/e3c500fb74d1f71242f6e0ac9b9a66eb38786aad\"}},\"author_association\":\"MEMBER\",\"auto_merge\":null,\"active_lock_reason\":null,\"merged\":true,\"mergeable\":null,\"rebaseable\":null,\"mergeable_state\":\"unknown\",\"merged_by\":{\"login\":\"mattclay\",\"id\":806360,\"node_id\":\"MDQ6VXNlcjgwNjM2MA==\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/806360?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/mattclay\",\"html_url\":\"https://github.com/mattclay\",\"followers_url\":\"https://api.github.com/users/mattclay/followers\",\"following_url\":\"https://api.github.com/users/mattclay/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/mattclay/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/mattclay/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/mattclay/subscriptions\",\"organizations_url\":\"https://api.github.com/users/mattclay/orgs\",\"repos_url\":\"https://api.github.com/users/mattclay/repos\",\"events_url\":\"https://api.github.com/users/mattclay/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/mattclay/received_events\",\"type\":\"User\",\"site_admin\":false},\"comments\":0,\"review_comments\":1,\"maintainer_can_modify\":false,\"commits\":7,\"additions\":138,\"deletions\":84,\"changed_files\":14}"
     headers:
       Access-Control-Allow-Origin:
       - '*'
@@ -213,9 +213,11 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 23 Feb 2021 00:09:31 GMT
-      ETag:
-      - W/"9d2af3bd0b40e1fd048083d3103dbd3008ce1bd9b52b944b291bbd40ff4c5da4"
+      - Thu, 25 Feb 2021 03:06:53 GMT
+      Etag:
+      - W/"fedcacee137dae099bd2ebb5381d4ead51423953edc22cc57d76b1fdf5c6f1a0"
+      Last-Modified:
+      - Tue, 09 Feb 2021 04:19:03 GMT
       Referrer-Policy:
       - origin-when-cross-origin, strict-origin-when-cross-origin
       Server:
@@ -236,23 +238,309 @@ interactions:
       X-GitHub-Media-Type:
       - github.cloak-preview, github.groot-preview; format=json
       X-GitHub-Request-Id:
-      - CD30:1608:3AE80F6:5F0EB11:603447BB
+      - 8184:40B7:653346:AC1F6D:6037144C
       X-OAuth-Scopes:
-      - ''
+      - repo, workflow
       X-RateLimit-Limit:
       - '5000'
       X-RateLimit-Remaining:
-      - '4920'
+      - '4204'
       X-RateLimit-Reset:
-      - '1614042531'
+      - '1614224282'
       X-XSS-Protection:
       - 1; mode=block
-      last-modified:
-      - Tue, 09 Feb 2021 04:19:03 GMT
       x-ratelimit-used:
-      - '80'
+      - '796'
     status:
       code: 200
       message: OK
     url: https://api.github.com/repos/ansible/ansible/pulls/73467
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/vnd.github.cloak-preview, application/vnd.github.groot-preview+json,
+        application/vnd.github.v3+json
+      Accept-Encoding:
+      - gzip, deflate
+      Host:
+      - github.com
+      User-Agent:
+      - Python/3.8 aiohttp/3.7.3
+    method: GET
+    uri: https://github.com/ansible/ansible/pull/73467.diff
+  response:
+    body: {}
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Security-Policy:
+      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; connect-src
+        ''self'' uploads.github.com www.githubstatus.com collector.githubapp.com api.github.com
+        github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com
+        github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com
+        cdn.optimizely.com logx.optimizely.com/v1/events wss://alive.github.com online.visualstudio.com/api/v1/locations;
+        font-src github.githubassets.com; form-action ''self'' github.com gist.github.com;
+        frame-ancestors ''none''; frame-src render.githubusercontent.com; img-src
+        ''self'' data: github.githubassets.com identicons.github.com collector.githubapp.com
+        github-cloud.s3.amazonaws.com user-images.githubusercontent.com/ *.githubusercontent.com;
+        manifest-src ''self''; media-src ''none''; script-src github.githubassets.com;
+        style-src ''unsafe-inline'' github.githubassets.com; worker-src github.com/socket-worker-5029ae85.js
+        gist.github.com/socket-worker-5029ae85.js'
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Thu, 25 Feb 2021 03:06:53 GMT
+      Expect-CT:
+      - max-age=2592000, report-uri="https://api.github.com/_private/browser/errors"
+      Location:
+      - https://patch-diff.githubusercontent.com/raw/ansible/ansible/pull/73467.diff
+      Referrer-Policy:
+      - no-referrer-when-downgrade
+      Server:
+      - GitHub.com
+      Set-Cookie:
+      - logged_in=no; domain=.github.com; path=/; expires=Fri, 25 Feb 2022 03:06:53
+        GMT; secure; HttpOnly; SameSite=Lax
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - X-PJAX
+      - Accept-Encoding, Accept, X-Requested-With
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-GitHub-Request-Id:
+      - 9988:41B1:6B14BF:84974D:6037144D
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 302
+      message: Found
+    url: https://github.com/ansible/ansible/pull/73467.diff
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/vnd.github.cloak-preview, application/vnd.github.groot-preview+json,
+        application/vnd.github.v3+json
+      Accept-Encoding:
+      - gzip, deflate
+      Host:
+      - patch-diff.githubusercontent.com
+      User-Agent:
+      - Python/3.8 aiohttp/3.7.3
+    method: GET
+    uri: https://patch-diff.githubusercontent.com/raw/ansible/ansible/pull/73467.diff
+  response:
+    body:
+      string: "diff --git a/test/integration/targets/setup_rpm_repo/defaults/main.yml
+        b/test/integration/targets/setup_rpm_repo/defaults/main.yml\nindex e69de29bb2d1d..19c033b92964b
+        100644\n--- a/test/integration/targets/setup_rpm_repo/defaults/main.yml\n+++
+        b/test/integration/targets/setup_rpm_repo/defaults/main.yml\n@@ -0,0 +1 @@\n+install_repos:
+        yes\ndiff --git a/test/integration/targets/setup_rpm_repo/handlers/main.yml
+        b/test/integration/targets/setup_rpm_repo/handlers/main.yml\nnew file mode
+        100644\nindex 0000000000000..a0af3c92d7594\n--- /dev/null\n+++ b/test/integration/targets/setup_rpm_repo/handlers/main.yml\n@@
+        -0,0 +1,5 @@\n+- name: remove repos\n+  yum_repository:\n+    state: absent\n+
+        \   name: \"{{ item }}\"\n+  loop: \"{{ repos }}\"\ndiff --git a/test/integration/targets/setup_rpm_repo/library/create_repo.py
+        b/test/integration/targets/setup_rpm_repo/library/create_repo.py\nnew file
+        mode 100644\nindex 0000000000000..6dc1e457c5567\n--- /dev/null\n+++ b/test/integration/targets/setup_rpm_repo/library/create_repo.py\n@@
+        -0,0 +1,94 @@\n+#!/usr/bin/python\n+\n+from __future__ import (absolute_import,
+        division, print_function)\n+__metaclass__ = type\n+\n+import os\n+import sys\n+import
+        tempfile\n+\n+from collections import namedtuple\n+\n+from ansible.module_utils.basic
+        import AnsibleModule\n+\n+try:\n+    from rpmfluff import SimpleRpmBuild\n+
+        \   from rpmfluff import YumRepoBuild\n+except ImportError:\n+    from rpmfluff.rpmbuild
+        import SimpleRpmBuild\n+    from rpmfluff.yumrepobuild import YumRepoBuild\n+\n+try:\n+
+        \   from rpmfluff import can_use_rpm_weak_deps\n+except ImportError:\n+    try:\n+
+        \       from rpmfluff.utils import can_use_rpm_weak_deps\n+    except ImportError:\n+
+        \       can_use_rpm_weak_deps = None\n+\n+RPM = namedtuple('RPM', ['name',
+        'version', 'release', 'epoch', 'recommends'])\n+\n+\n+SPECS = [\n+    RPM('dinginessentail',
+        '1.0', '1', None, None),\n+    RPM('dinginessentail', '1.0', '2', '1', None),\n+
+        \   RPM('dinginessentail', '1.1', '1', '1', None),\n+    RPM('dinginessentail-olive',
+        '1.0', '1', None, None),\n+    RPM('dinginessentail-olive', '1.1', '1', None,
+        None),\n+    RPM('landsidescalping', '1.0', '1', None, None),\n+    RPM('landsidescalping',
+        '1.1', '1', None, None),\n+    RPM('dinginessentail-with-weak-dep', '1.0',
+        '1', None, ['dinginessentail-weak-dep']),\n+    RPM('dinginessentail-weak-dep',
+        '1.0', '1', None, None),\n+]\n+\n+\n+def create_repo(arch='x86_64'):\n+    pkgs
+        = []\n+    for spec in SPECS:\n+        pkg = SimpleRpmBuild(spec.name, spec.version,
+        spec.release, [arch])\n+        pkg.epoch = spec.epoch\n+\n+        if spec.recommends:\n+
+        \           # Skip packages that require weak deps but an older version of
+        RPM is being used\n+            if not can_use_rpm_weak_deps or not can_use_rpm_weak_deps():\n+
+        \               continue\n+\n+            for recommend in spec.recommends:\n+
+        \               pkg.add_recommends(recommend)\n+\n+        pkgs.append(pkg)\n+\n+
+        \   repo = YumRepoBuild(pkgs)\n+    repo.make(arch)\n+\n+    for pkg in pkgs:\n+
+        \       pkg.clean()\n+\n+    return repo.repoDir\n+\n+\n+def main():\n+    module
+        = AnsibleModule(\n+        argument_spec={\n+            'arch': {'required':
+        True},\n+            'tempdir': {'type': 'path'},\n+        }\n+    )\n+\n+
+        \   arch = module.params['arch']\n+    tempdir = module.params['tempdir']\n+\n+
+        \   # Save current temp dir so we can set it back later\n+    original_tempdir
+        = tempfile.tempdir\n+    tempfile.tempdir = tempdir\n+\n+    try:\n+        repo_dir
+        = create_repo(arch)\n+    finally:\n+        tempfile.tempdir = original_tempdir\n+\n+
+        \   module.exit_json(repo_dir=repo_dir, tmpfile=tempfile.gettempdir())\n+\n+\n+if
+        __name__ == \"__main__\":\n+    main()\ndiff --git a/test/integration/targets/setup_rpm_repo/meta/main.yml
+        b/test/integration/targets/setup_rpm_repo/meta/main.yml\nnew file mode 100644\nindex
+        0000000000000..1810d4bec988c\n--- /dev/null\n+++ b/test/integration/targets/setup_rpm_repo/meta/main.yml\n@@
+        -0,0 +1,2 @@\n+dependencies:\n+  - setup_remote_tmp_dir\ndiff --git a/test/integration/targets/setup_rpm_repo/tasks/main.yml
+        b/test/integration/targets/setup_rpm_repo/tasks/main.yml\nindex 14addf79a831d..a6766f2053cbd
+        100644\n--- a/test/integration/targets/setup_rpm_repo/tasks/main.yml\n+++
+        b/test/integration/targets/setup_rpm_repo/tasks/main.yml\n@@ -31,18 +31,22
+        @@\n       - ansible_facts.distribution in ['RedHat', 'CentOS']\n       -
+        ansible_facts.distribution_major_version is version('8', '>=')\n \n-  - name:
+        Copy script for creating a repo\n-    copy:\n-      src: create-repo.py\n-
+        \     dest: /tmp/create-repo.py\n-      mode: 0755\n+  - set_fact:\n+      repos:\n+
+        \       - \"fake-{{ ansible_architecture }}\"\n+        - \"fake-i686\"\n+
+        \       - \"fake-ppc64\"\n+    changed_when: yes\n+    notify: remove repos\n
+        \n   - name: Create RPMs and put them into a repo\n-    shell: \"{{ansible_python_interpreter}}
+        /tmp/create-repo.py {{ ansible_architecture }}\"\n+    create_repo:\n+      arch:
+        \"{{ ansible_architecture }}\"\n+      tempdir: \"{{ remote_tmp_dir }}\"\n
+        \    register: repo\n \n   - set_fact:\n-      repodir: \"{{ repo.stdout_lines[-1]
+        }}\"\n+      repodir: \"{{ repo.repo_dir }}\"\n \n   - name: Install the repo\n
+        \    yum_repository:\n@@ -50,6 +54,7 @@\n       description: \"fake-{{ ansible_architecture
+        }}\"\n       baseurl: \"file://{{ repodir }}\"\n       gpgcheck: no\n+    when:
+        install_repos | bool\n \n   - name: Copy comps.xml file\n     copy:\n@@ -61,11
+        +66,13 @@\n     command: createrepo -g {{ repodir_comps.dest | quote }} {{
+        repodir | quote }}\n \n   - name: Create RPMs and put them into a repo (i686)\n-
+        \   shell: \"{{ansible_python_interpreter}} /tmp/create-repo.py i686\"\n+
+        \   create_repo:\n+      arch: i686\n+      tempdir: \"{{ remote_tmp_dir }}\"\n
+        \    register: repo_i686\n \n   - set_fact:\n-      repodir_i686: \"{{ repo_i686.stdout_lines[-1]
+        }}\"\n+      repodir_i686: \"{{ repo_i686.repo_dir }}\"\n \n   - name: Install
+        the repo (i686)\n     yum_repository:\n@@ -73,13 +80,16 @@\n       description:
+        \"fake-i686\"\n       baseurl: \"file://{{ repodir_i686 }}\"\n       gpgcheck:
+        no\n+    when: install_repos | bool\n \n   - name: Create RPMs and put them
+        into a repo (ppc64)\n-    shell: \"{{ansible_python_interpreter}} /tmp/create-repo.py
+        ppc64\"\n+    create_repo:\n+      arch: ppc64\n+      tempdir: \"{{ remote_tmp_dir
+        }}\"\n     register: repo_ppc64\n \n   - set_fact:\n-      repodir_ppc64:
+        \"{{ repo_ppc64.stdout_lines[-1] }}\"\n+      repodir_ppc64: \"{{ repo_ppc64.repo_dir
+        }}\"\n \n   - name: Install the repo (ppc64)\n     yum_repository:\n@@ -87,11
+        +97,6 @@\n       description: \"fake-ppc64\"\n       baseurl: \"file://{{
+        repodir_ppc64 }}\"\n       gpgcheck: no\n-\n-  - set_fact:\n-      repos:\n-
+        \       - \"fake-{{ ansible_architecture }}\"\n-        - \"fake-i686\"\n-
+        \       - \"fake-ppc64\"\n+    when: install_repos | bool\n \n   when: ansible_distribution
+        in ['RedHat', 'CentOS', 'ScientificLinux', 'Fedora']\ndiff --git a/test/integration/targets/yum_repository/defaults/main.yml
+        b/test/integration/targets/yum_repository/defaults/main.yml\nnew file mode
+        100644\nindex 0000000000000..4c1fbc652e643\n--- /dev/null\n+++ b/test/integration/targets/yum_repository/defaults/main.yml\n@@
+        -0,0 +1,5 @@\n+yum_repository_test_package: dinginessentail\n+yum_repository_test_repo:\n+
+        \ name: fakerepo\n+  description: Fake Repo\n+  baseurl: \"file://{{ repodir
+        }}\"\ndiff --git a/test/integration/targets/yum_repository/handlers/main.yml
+        b/test/integration/targets/yum_repository/handlers/main.yml\nnew file mode
+        100644\nindex 0000000000000..f96c23917b7ae\n--- /dev/null\n+++ b/test/integration/targets/yum_repository/handlers/main.yml\n@@
+        -0,0 +1,4 @@\n+- name: remove listtest repo\n+  yum_repository:\n+    name:
+        listtest\n+    state: absent\ndiff --git a/test/integration/targets/yum_repository/meta/main.yml
+        b/test/integration/targets/yum_repository/meta/main.yml\nnew file mode 100644\nindex
+        0000000000000..56539a4f55716\n--- /dev/null\n+++ b/test/integration/targets/yum_repository/meta/main.yml\n@@
+        -0,0 +1,4 @@\n+dependencies:\n+  - role: setup_rpm_repo\n+    vars:\n+      install_repos:
+        no\ndiff --git a/test/integration/targets/yum_repository/tasks/main.yml b/test/integration/targets/yum_repository/tasks/main.yml\nindex
+        1eabf51b032b8..d81957755c273 100644\n--- a/test/integration/targets/yum_repository/tasks/main.yml\n+++
+        b/test/integration/targets/yum_repository/tasks/main.yml\n@@ -1,17 +1,6 @@\n
+        - name: Run tests\n   when: ansible_facts.distribution in ['CentOS', 'Fedora']\n
+        \  block:\n-    - name: Include distribution specific variables\n-      include_vars:
+        \"{{ lookup('first_found', params) }}\"\n-      vars:\n-        params:\n-
+        \         files:\n-            - \"{{ ansible_facts.distribution }}-{{ ansible_facts.distribution_major_version
+        }}.yml\"\n-            - \"{{ ansible_facts.distribution }}.yml\"\n-            -
+        default.yml\n-          paths:\n-            - vars\n-\n     - name: ensure
+        {{ yum_repository_test_package }} is uninstalled to begin with\n       action:
+        \"{{ ansible_facts.pkg_mgr }}\"\n       args:\n@@ -184,6 +173,7 @@\n         includepkgs:\n
+        \          - ccc\n           - ddd\n+      notify: remove listtest repo\n
+        \n     - name: Assert that lists were properly inserted\n       assert:\n@@
+        -198,24 +188,3 @@\n         repofile: \"{{ lookup('file', '/etc/yum.repos.d/listtest.repo')
+        }}\"\n         url_hostname: \"{{ yum_repository_test_repo.baseurl | urlsplit('hostname')
+        }}\"\n         url_hostname2: \"{{ url_hostname | replace('download[0-9]?\\\\.',
+        'download2\\\\.', 1) }}\"\n-\n-    - name: CLEANUP | Remove list test repo\n-
+        \     yum_repository:\n-        name: listtest\n-        state: absent\n-\n-
+        \   - name: CLEANUP | Remove {{ yum_repository_test_repo.name }}\n-      yum_repository:\n-
+        \       name: \"{{ yum_repository_test_repo.name }}\"\n-        state: absent\n-\n-
+        \   - name: CLEANUP | Enable EPEL\n-      yum_repository:\n-        name:
+        epel\n-        state: present\n-        description: \"{{ yum_repository_epel.description
+        | default(omit) }}\"\n-        metalink: \"{{ yum_repository_epel.metalink
+        | default(omit) }}\"\n-        mirrorlist: \"{{ yum_repository_epel.mirrorlist
+        | default(omit) }}\"\n-        gpgkey: \"{{ yum_repository_epel.gpgkey }}\"\n-
+        \       gpgcheck: yes\n-      when: ansible_facts.distribution == 'CentOS'\ndiff
+        --git a/test/integration/targets/yum_repository/vars/CentOS-6.yml b/test/integration/targets/yum_repository/vars/CentOS-6.yml\ndeleted
+        file mode 100644\nindex db9947d5ea3a0..0000000000000\n--- a/test/integration/targets/yum_repository/vars/CentOS-6.yml\n+++
+        /dev/null\n@@ -1,10 +0,0 @@\n-yum_repository_test_package: sl\n-yum_repository_test_repo:\n-
+        \ name: epel\n-  description: EPEL yum repo\n-  baseurl: https://archives.fedoraproject.org/pub/archive/epel/{{
+        ansible_facts.distribution_major_version }}/$basearch\n-\n-yum_repository_epel:\n-
+        \ description: Extra Packages for Enterprise Linux {{ ansible_facts.distribution_major_version
+        }} - $basearch\n-  mirrorlist: https://mirrors.fedoraproject.org/metalink?repo=epel-{{
+        ansible_facts.distribution_major_version }}&arch=$basearch\n-  gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{
+        ansible_facts.distribution_major_version }}\ndiff --git a/test/integration/targets/yum_repository/vars/CentOS-8.yml
+        b/test/integration/targets/yum_repository/vars/CentOS-8.yml\ndeleted file
+        mode 100644\nindex 22d4d13e722cc..0000000000000\n--- a/test/integration/targets/yum_repository/vars/CentOS-8.yml\n+++
+        /dev/null\n@@ -1,10 +0,0 @@\n-yum_repository_test_package: sshpass\n-yum_repository_test_repo:\n-
+        \ name: epel\n-  description: EPEL yum repo\n-  baseurl: https://download.fedoraproject.org/pub/epel/$releasever/Everything/$basearch\n-\n-yum_repository_epel:\n-
+        \ description: Extra Packages for Enterprise Linux $releasever - $basearch\n-
+        \ metalink: https://mirrors.fedoraproject.org/metalink?repo=epel-$releasever&arch=$basearch&infra=$infra&content=$contentdir\n-
+        \ gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_facts.distribution_major_version
+        }}\ndiff --git a/test/integration/targets/yum_repository/vars/CentOS.yml b/test/integration/targets/yum_repository/vars/CentOS.yml\ndeleted
+        file mode 100644\nindex 542b722f7a2aa..0000000000000\n--- a/test/integration/targets/yum_repository/vars/CentOS.yml\n+++
+        /dev/null\n@@ -1,10 +0,0 @@\n-yum_repository_test_package: sl\n-yum_repository_test_repo:\n-
+        \ name: epel\n-  description: EPEL yum repo\n-  baseurl: http://download.fedoraproject.org/pub/epel/{{
+        ansible_facts.distribution_major_version }}/$basearch\n-\n-yum_repository_epel:\n-
+        \ description: Extra Packages for Enterprise Linux {{ ansible_facts.distribution_major_version
+        }} - $basearch\n-  mirrorlist: https://mirrors.fedoraproject.org/metalink?repo=epel-{{
+        ansible_facts.distribution_major_version }}&arch=$basearch\n-  gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{
+        ansible_facts.distribution_major_version }}\ndiff --git a/test/integration/targets/yum_repository/vars/Fedora.yml
+        b/test/integration/targets/yum_repository/vars/Fedora.yml\ndeleted file mode
+        100644\nindex 8c37eaa1076fd..0000000000000\n--- a/test/integration/targets/yum_repository/vars/Fedora.yml\n+++
+        /dev/null\n@@ -1,5 +0,0 @@\n-yum_repository_test_package: libbdplus\n-yum_repository_test_repo:\n-
+        \ name: rpmfusion-free\n-  description: RPM Fusion for Fedora {{ ansible_distribution_major_version
+        }} - Free\n-  baseurl: http://download1.rpmfusion.org/free/fedora/releases/{{
+        ansible_distribution_major_version }}/Everything/{{ ansible_architecture }}/os/\ndiff
+        --git a/test/integration/targets/yum_repository/vars/default.yml b/test/integration/targets/yum_repository/vars/default.yml\ndeleted
+        file mode 100644\nindex e69de29bb2d1d..0000000000000\n"
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Encoding:
+      - gzip
+      Content-Security-Policy:
+      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; connect-src
+        ''self'' uploads.github.com www.githubstatus.com collector.githubapp.com api.github.com
+        github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com
+        github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com
+        cdn.optimizely.com logx.optimizely.com/v1/events wss://alive.github.com; font-src
+        github.githubassets.com; form-action ''self'' github.com gist.github.com;
+        frame-ancestors ''none''; frame-src render.githubusercontent.com; img-src
+        ''self'' data: github.githubassets.com identicons.github.com collector.githubapp.com
+        github-cloud.s3.amazonaws.com user-images.githubusercontent.com/ *.githubusercontent.com;
+        manifest-src ''self''; media-src ''none''; script-src github.githubassets.com;
+        style-src ''unsafe-inline'' github.githubassets.com; worker-src github.com/socket-worker-5029ae85.js
+        gist.github.com/socket-worker-5029ae85.js'
+      Content-Type:
+      - text/plain; charset=utf-8
+      Date:
+      - Thu, 25 Feb 2021 03:06:53 GMT
+      Etag:
+      - W/"066363666a8d7f22e09a19b474a7b5ef"
+      Expect-CT:
+      - max-age=2592000, report-uri="https://api.github.com/_private/browser/errors"
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Server:
+      - GitHub.com
+      Set-Cookie:
+      - logged_in=no; domain=.github.com; path=/; expires=Fri, 25 Feb 2022 03:06:53
+        GMT; secure; HttpOnly; SameSite=Lax
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - X-PJAX
+      - Accept-Encoding, Accept, X-Requested-With
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-GitHub-Request-Id:
+      - D59C:582A:A3EB0B:C53C37:6037144D
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+    url: https://patch-diff.githubusercontent.com/raw/ansible/ansible/pull/73467.diff
 version: 1
