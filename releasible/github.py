@@ -7,7 +7,7 @@ class GitHubAPICall:
         self.link = None
         self.calls = 0
 
-    async def get(self, endpoint):
+    async def get(self, endpoint, json=True):
         print(endpoint)
         async with self.aio_session.get(
             endpoint,
@@ -26,7 +26,10 @@ class GitHubAPICall:
 
             self.calls += 1
             self.link = resp.headers.get('link')
-            return await resp.json()
+
+            if json:
+                return await resp.json()
+            return await resp.text()
 
     async def get_all_pages(self, endpoint, key=None):
         req = self.get(endpoint)

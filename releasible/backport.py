@@ -2,6 +2,8 @@ import asyncio
 import re
 from releasible.github import GitHubAPICall
 from releasible.model.pullrequest import Backport, PullRequest
+from unidiff import PatchSet
+
 
 PULL_URL_RE = re.compile(r'(?P<user>\S+)/(?P<repo>\S+)#(?P<ticket>\d+)')
 PULL_HTTP_URL_RE = re.compile(r'https?://(?:www\.|)github.com/(?P<user>\S+)/(?P<repo>\S+)/pull/(?P<ticket>\d+)')
@@ -125,7 +127,8 @@ class BackportFinder(GitHubAPICall):
                 pr,
                 allow_non_ansible_ansible=allow_non_ansible_ansible,
                 api=True))
-        return PullRequest(pr_dict)
+        pr_diff = PatchSet(await self.get(pr_dict['diff_url'], json=False))
+        return PullRequest(pr_dict, pr_diff)
 
     async def guess_original_pr(self, q):
         '''

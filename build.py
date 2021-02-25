@@ -56,7 +56,7 @@ async def ctx_backports(template):
                 original = original[0]
             else:
                 original = None
-            bp = Backport(pr.pr, original)
+            bp = Backport(pr.pr, pr.diff, original)
             backports[version].append(bp)
 
             # While we're here track global max risks
