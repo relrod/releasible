@@ -6,7 +6,7 @@ from releasible.backport import *
 async def finder():
     import os
     aio_session = aiohttp.ClientSession()
-    token = os.environ.get('GITHUB_TOKEN_RO', aio_session)
+    token = os.environ.get('GITHUB_TOKEN_RO')
     yield BackportFinder(token, aio_session)
     await aio_session.close()
 
@@ -66,3 +66,8 @@ async def test_guess_original_pr(finder):
     original_for_73067 = await finder.guess_original_pr(
         'https://github.com/ansible/ansible/pull/73067')
     assert original_for_73067[0].number == 55
+
+    # Full, out-of-repo commit URL and later self-reference
+    original_for_73556 = await finder.guess_original_pr(
+        'https://github.com/ansible/ansible/pull/73556')
+    assert original_for_73556[0].number == 82

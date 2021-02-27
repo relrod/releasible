@@ -7,6 +7,7 @@ from unidiff import PatchSet
 
 PULL_URL_RE = re.compile(r'(?P<user>\S+)/(?P<repo>\S+)#(?P<ticket>\d+)')
 PULL_HTTP_URL_RE = re.compile(r'https?://(?:www\.|)github.com/(?P<user>\S+)/(?P<repo>\S+)/pull/(?P<ticket>\d+)')
+COMMIT_HTTP_URL_RE = re.compile(r'https?://(?:www\.|)github.com/(?P<user>\S+)/(?P<repo>\S+)/commit/(?P<hash>\w+)')
 PULL_BACKPORT_IN_TITLE = re.compile(r'.*\(#?(?P<ticket1>\d+)\)|\(backport of #?(?P<ticket2>\d+)\).*', re.I)
 PULL_CHERRY_PICKED_FROM = re.compile(r'\(?cherry(?:\-| )picked from(?: commit|) (?P<hash>\w+)(?:\)|\.|$)')
 TICKET_NUMBER = re.compile(r'(?:^|\s)#(\d+)')
@@ -104,7 +105,10 @@ class BackportFinder(GitHubAPICall):
 
         # We have to query the actual pull request endpoint, otherwise we lack
         # the fields we use later for scoring (comments, review_comments, etc.)
-        return await asyncio.gather(*[self.get_pr(pr['number']) for pr in prs])
+        # We use the html_url because the PR might be outside of ansible/ansible
+        # and get_pr will call normalize_pr_url which can work on html urls.
+        return await asyncio.gather(
+            *[self.get_pr(pr['html_url']) for pr in prs])
 
     async def get_backports_for_version(self, version):
         out = []
@@ -164,7 +168,9 @@ class BackportFinder(GitHubAPICall):
             if not ticket:
                 ticket = title_search.group('ticket2')
             try:
-                possibilities.append(await self.get_pr(ticket))
+                possibility = await self.get_pr(ticket)
+                if possibility.number != pr.number:
+                    possibilities.append(possibility)
             except Exception:
                 pass
 
@@ -175,23 +181,35 @@ class BackportFinder(GitHubAPICall):
             cherrypick = PULL_CHERRY_PICKED_FROM.match(line)
             if cherrypick:
                 prs = await self.prs_for_commit(cherrypick.group('hash'))
-                possibilities.extend(prs)
+                for possibility in prs:
+                    if possibility.number != pr.number:
+                        possibilities.append(possibility)
                 continue
 
-            # b. Try searching for other referenced PRs (by #nnnnn or full URL)
-            tickets = [('ansible', 'ansible', ticket) for ticket in TICKET_NUMBER.findall(line)]
+            # b. Try searching for a full link to another commit
+            commit_link = COMMIT_HTTP_URL_RE.search(line)
+            if commit_link:
+                prs = await self.prs_for_commit(commit_link.group('hash'))
+                for possibility in prs:
+                    if possibility.number != pr.number:
+                        possibilities.append(possibility)
+                continue
+
+            # c. Try searching for other referenced PRs (by #nnnnn or full URL)
+            tickets = [
+                ('ansible', 'ansible', ticket)
+                for ticket in TICKET_NUMBER.findall(line)
+            ]
             tickets.extend(PULL_HTTP_URL_RE.findall(line))
             tickets.extend(PULL_URL_RE.findall(line))
             if tickets:
                 for ticket in tickets:
                     # Is it a PR (even if not in ansible/ansible)?
-                    # TODO: As a small optimization/to avoid extra calls to GitHub,
-                    # we could limit this check to non-URL matches. If it's a URL,
-                    # we know it's definitely a pull request.
                     try:
                         pr_url = '{0}/{1}#{2}'.format(ticket[0], ticket[1], ticket[2])
-                        ticket_pr = await self.get_pr(pr_url)
-                        possibilities.append(ticket_pr)
+                        possibility = await self.get_pr(pr_url)
+                        if possibility.number != pr.number:
+                            possibilities.append(possibility)
                     except Exception:
                         pass
                 continue  # Future-proofing
