@@ -8,7 +8,7 @@ from unidiff import PatchSet
 PULL_URL_RE = re.compile(r'(?P<user>\S+)/(?P<repo>\S+)#(?P<ticket>\d+)')
 PULL_HTTP_URL_RE = re.compile(r'https?://(?:www\.|)github\.com/(?P<user>\S+)/(?P<repo>\S+)/pull/(?P<ticket>\d+)')
 COMMIT_HTTP_URL_RE = re.compile(r'https?://(?:www\.|)github\.com/(?P<user>\S+)/(?P<repo>\S+)/commit/(?P<hash>\w+)')
-PULL_BACKPORT_IN_TITLE = re.compile(r'.*\(#?(?P<ticket1>\d+)\)|\(backport of #?(?P<ticket2>\d+)\).*', re.I)
+PULL_BACKPORT_IN_TITLE = re.compile(r'\((?:backport of |)#?(?P<ticket>\d+)\)', re.I)
 PULL_CHERRY_PICKED_FROM = re.compile(r'\(?cherry(?:\-| )picked from(?: commit|) (?P<hash>\w+)(?:\)|\.|$)')
 TICKET_NUMBER = re.compile(r'(?:^|\s)#(\d+)')
 
@@ -162,11 +162,9 @@ class BackportFinder(GitHubAPICall):
         possibilities = []
 
         # 1. Try searching for it in the title.
-        title_search = PULL_BACKPORT_IN_TITLE.match(pr.pr['title'])
+        title_search = PULL_BACKPORT_IN_TITLE.search(pr.pr['title'])
         if title_search:
-            ticket = title_search.group('ticket1')
-            if not ticket:
-                ticket = title_search.group('ticket2')
+            ticket = title_search.group('ticket')
             try:
                 possibility = await self.get_pr(ticket)
                 if possibility.number != pr.number:
