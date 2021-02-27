@@ -4,13 +4,12 @@ from releasible.github import GitHubAPICall
 from releasible.model.pullrequest import Backport, PullRequest
 from unidiff import PatchSet
 
-
 PULL_URL_RE = re.compile(r'(?P<user>\S+)/(?P<repo>\S+)#(?P<ticket>\d+)')
 PULL_HTTP_URL_RE = re.compile(r'https?://(?:www\.|)github\.com/(?P<user>\S+)/(?P<repo>\S+)/pull/(?P<ticket>\d+)')
 COMMIT_HTTP_URL_RE = re.compile(r'https?://(?:www\.|)github\.com/(?P<user>\S+)/(?P<repo>\S+)/commit/(?P<hash>\w+)')
 PULL_BACKPORT_IN_TITLE = re.compile(r'\((?:backport of |)#?(?P<ticket>\d+)\)', re.I)
 PULL_CHERRY_PICKED_FROM = re.compile(r'\(?cherry(?:\-| )picked from(?: commit|) (?P<hash>\w+)(?:\)|\.|$)')
-TICKET_NUMBER = re.compile(r'(?:^|\s)#(\d+)')
+TICKET_NUMBER = re.compile(r'(?:^|\s)#(?P<ticket>\d+)')
 
 def normalize_pr_url(
         pr,

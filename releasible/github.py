@@ -18,8 +18,8 @@ class GitHubAPICall:
                     'application/vnd.github.groot-preview+json, '
                     'application/vnd.github.v3+json'
                 ),
-            }) as resp:
-
+            }
+        ) as resp:
             if resp.status != 200:
                 raise Exception(
                     '{0} got status {1}'.format(endpoint, resp.status))
