@@ -1,0 +1,14 @@
+[package]
+name = "releasible"
+version = "0.1.0"
+authors = ["Rick Elrod <rick@elrod.me>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+lazy_static = "1.4.0"
+reqwest = { version = "0.11", features = ["json"] }
+tera = "1"
+tokio = { version = "1", features = ["full"] }
+version-compare = "0.0.11"

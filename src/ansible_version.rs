@@ -1,0 +1,225 @@
+use std::error::Error;
+use std::fmt;
+use std::cmp::Ordering;
+use std::str::FromStr;
+
+#[derive(Debug)]
+struct AnsibleVersionParseError {
+    input: String,
+}
+
+impl AnsibleVersionParseError {
+    fn new(input: String) -> AnsibleVersionParseError {
+        AnsibleVersionParseError { input }
+    }
+}
+
+impl fmt::Display for AnsibleVersionParseError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "Failed to parse: {}", self.input)
+    }
+}
+
+impl Error for AnsibleVersionParseError {}
+
+// Note: Ord doesn't really make sense for Stage alone.
+// An alpha is newer than, or older than, a GA release, depending on which
+// versions are being compared. So we implement Ord on AnsibleVersion itself
+// instead
+#[derive(Eq, PartialEq, Copy, Clone, Debug)]
+enum Stage {
+    /// General Availability release
+    GA,
+    /// Release Candidate
+    RC(u8),
+    /// Alpha (currently not used by Ansible)
+    A(u8),
+    /// Beta
+    B(u8),
+}
+
+impl fmt::Display for Stage {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let out = match self {
+            Stage::GA => "".to_string(),
+            Stage::RC(v) => format!("rc{}", v),
+            Stage::A(v) => format!("a{}", v),
+            Stage::B(v) => format!("b{}", v),
+        };
+        write!(f, "{}", out)
+    }
+}
+
+#[derive(Eq, PartialEq, Copy, Clone, Debug)]
+struct AnsibleVersion {
+    x: u8,
+    y: u8,
+    z: u8,
+    stage: Stage,
+}
+
+impl AnsibleVersion {
+    fn new(x: u8, y: u8, z: u8, stage: Stage) -> AnsibleVersion {
+        AnsibleVersion { x, y, z, stage }
+    }
+}
+
+impl Ord for AnsibleVersion {
+    fn cmp(&self, other: &Self) -> Ordering {
+        if self.x != other.x {
+            return self.x.cmp(&other.x);
+        }
+        if self.y != other.y {
+            return self.y.cmp(&other.y);
+        }
+        if self.z != other.z {
+            return self.z.cmp(&other.z);
+        }
+        // If we're still here, we compare stage only.
+        // We have equal x.y.z at this point.
+        use Stage::*;
+        match (self.stage, other.stage) {
+            (GA, GA) => Ordering::Equal,
+            (GA, _) => Ordering::Greater,
+            (RC(_), GA) => Ordering::Less,
+            (RC(ref sv), RC(ref ov)) => sv.cmp(ov),
+            (RC(_), _) => Ordering::Greater,
+            (A(ref sv), A(ref ov)) => sv.cmp(ov),
+            (A(_), _) => Ordering::Less,
+            (B(ref sv), B(ref ov)) => sv.cmp(ov),
+            (B(_), GA) => Ordering::Less,
+            (B(_), RC(_)) => Ordering::Less,
+            (B(_), A(_)) => Ordering::Greater,
+        }
+    }
+}
+
+impl PartialOrd for AnsibleVersion {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl fmt::Display for AnsibleVersion {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}.{}.{}{}", self.x, self.y, self.z, self.stage)
+    }
+}
+
+impl FromStr for AnsibleVersion {
+    type Err = AnsibleVersionParseError;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        fn to_u8(s: &&str) -> Option<u8> {
+            s.parse::<u8>().ok()
+        }
+
+        fn to_z_and_stage(s: &str) -> Option<(u8, Stage)> {
+            // If it's fully numeric, this must be a GA release.
+            if let Some(z) = s.parse::<u8>().ok() {
+                return Some((z, Stage::GA))
+            }
+
+            let (vec, stage): (Vec<&str>, fn(u8) -> Stage) =
+                if s.contains("rc") {
+                    (s.split("rc").collect(), Stage::RC)
+                } else if s.contains("b") {
+                    (s.split("b").collect(), Stage::B)
+                } else if s.contains("a") {
+                    (s.split("a").collect(), Stage::A)
+                } else {
+                    return None
+                };
+
+            vec.get(0).and_then(to_u8).and_then(|z| {
+                vec.get(1).and_then(to_u8).and_then(|p| {
+                    Some((z, stage(p)))
+                })
+            })
+        }
+
+        let components: Vec<&str> = s.split('.').collect();
+        let version =
+            components.get(0).and_then(to_u8).and_then(|x| {
+                components.get(1).and_then(to_u8).and_then(|y| {
+                    components.get(2).and_then(|z| {
+                        if let Some((z, stage)) = to_z_and_stage(z) {
+                            Some(AnsibleVersion::new(x, y, z, stage))
+                        } else {
+                            None
+                        }
+                    })
+                })
+            });
+        version.ok_or(AnsibleVersionParseError::new(s.to_string()))
+    }
+}
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use super::Stage::*;
+
+    #[test]
+    #[allow(non_snake_case)]
+    fn test_AnsibleVersion_FromStr() {
+        assert_eq!(
+            AnsibleVersion::from_str("2.10.0").unwrap(),
+            AnsibleVersion::new(2, 10, 0, GA));
+        assert_eq!(
+            AnsibleVersion::from_str("2.10.3rc1").unwrap(),
+            AnsibleVersion::new(2, 10, 3, RC(1)));
+
+    }
+
+    #[test]
+    #[allow(non_snake_case)]
+    fn test_AnsibleVersion_ordering() {
+        assert!(AnsibleVersion::new(2, 8, 4, GA) == AnsibleVersion::new(2, 8, 4, GA));
+        assert!(AnsibleVersion::new(2, 8, 4, GA) >= AnsibleVersion::new(2, 8, 4, GA));
+        assert!(AnsibleVersion::new(2, 8, 4, GA) >= AnsibleVersion::new(2, 8, 4, A(3)));
+        assert!(AnsibleVersion::new(2, 8, 3, GA) <= AnsibleVersion::new(2, 8, 4, GA));
+        assert!(AnsibleVersion::new(2, 8, 3, GA) < AnsibleVersion::new(2, 8, 4, GA));
+        assert!(AnsibleVersion::new(2, 8, 4, GA) < AnsibleVersion::new(2, 9, 10, RC(1)));
+
+        assert!(AnsibleVersion::new(2, 11, 0, B(1)) == AnsibleVersion::new(2, 11, 0, B(1)));
+        assert!(AnsibleVersion::new(2, 11, 0, B(2)) > AnsibleVersion::new(2, 11, 0, B(1)));
+        assert!(AnsibleVersion::new(2, 11, 0, B(2)) < AnsibleVersion::new(2, 11, 0, B(3)));
+        assert!(AnsibleVersion::new(2, 11, 0, B(2)) < AnsibleVersion::new(2, 11, 9, RC(3)));
+        assert!(AnsibleVersion::new(2, 11, 0, B(2)) < AnsibleVersion::new(2, 11, 9, A(1)));
+        assert!(AnsibleVersion::new(2, 11, 0, B(2)) > AnsibleVersion::new(2, 11, 0, A(1)));
+        assert!(AnsibleVersion::new(2, 11, 0, B(2)) < AnsibleVersion::new(2, 11, 0, GA));
+        assert!(AnsibleVersion::new(2, 11, 9, B(2)) < AnsibleVersion::new(2, 11, 9, RC(3)));
+
+        assert!(AnsibleVersion::new(2, 11, 0, A(1)) < AnsibleVersion::new(2, 11, 0, B(1)));
+        assert!(AnsibleVersion::new(2, 11, 0, A(1)) < AnsibleVersion::new(2, 11, 0, GA));
+        assert!(AnsibleVersion::new(2, 11, 0, A(1)) < AnsibleVersion::new(2, 11, 0, A(2)));
+        assert!(AnsibleVersion::new(2, 12, 0, A(1)) > AnsibleVersion::new(2, 11, 0, A(2)));
+        assert!(AnsibleVersion::new(2, 12, 0, A(1)) > AnsibleVersion::new(2, 11, 0, A(1)));
+        assert!(AnsibleVersion::new(2, 11, 0, A(1)) < AnsibleVersion::new(2, 11, 0, RC(3)));
+        assert!(AnsibleVersion::new(2, 12, 0, GA) > AnsibleVersion::new(2, 11, 99, GA));
+        assert!(AnsibleVersion::new(2, 12, 0, GA) > AnsibleVersion::new(2, 11, 99, B(200)));
+        assert!(AnsibleVersion::new(2, 12, 5, GA) > AnsibleVersion::new(2, 12, 4, B(200)));
+        assert!(AnsibleVersion::new(2, 12, 5, GA) > AnsibleVersion::new(2, 12, 4, GA));
+
+        assert!(AnsibleVersion::new(2, 12, 5, RC(3)) < AnsibleVersion::new(2, 12, 6, GA));
+        assert!(AnsibleVersion::new(2, 12, 5, RC(3)) > AnsibleVersion::new(2, 12, 5, B(3)));
+        assert!(AnsibleVersion::new(2, 12, 5, RC(3)) == AnsibleVersion::new(2, 12, 5, RC(3)));
+        assert!(AnsibleVersion::new(2, 12, 5, RC(3)) <= AnsibleVersion::new(2, 12, 5, RC(3)));
+        assert!(AnsibleVersion::new(2, 12, 5, RC(5)) <= AnsibleVersion::new(2, 12, 5, RC(9)));
+
+        assert!(AnsibleVersion::new(3, 12, 5, RC(3)) >= AnsibleVersion::new(2, 12, 5, RC(3)));
+        assert!(AnsibleVersion::new(3, 12, 5, RC(3)) > AnsibleVersion::new(2, 12, 5, RC(3)));
+        assert!(AnsibleVersion::new(3, 12, 5, RC(3)) < AnsibleVersion::new(9, 12, 5, RC(3)));
+    }
+
+    #[test]
+    #[allow(non_snake_case)]
+    fn test_AnsibleVersion_display() {
+        assert_eq!(format!("{}", AnsibleVersion::new(2, 12, 5, GA)), "2.12.5");
+        assert_eq!(format!("{}", AnsibleVersion::new(2, 12, 5, RC(1))), "2.12.5rc1");
+        assert_eq!(format!("{}", AnsibleVersion::new(2, 11, 0, B(1))), "2.11.0b1");
+        assert_eq!(format!("{}", AnsibleVersion::new(2, 11, 0, A(1))), "2.11.0a1");
+    }
+}
