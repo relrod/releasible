@@ -32,3 +32,27 @@ impl FromStr for Product {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    #[allow(non_snake_case)]
+    fn test_Product_FromStr() {
+        assert_eq!(Product::from_str("ansible"), Ok(Product::Ansible));
+        assert_eq!(Product::from_str("ansible-base"), Ok(Product::AnsibleBase));
+        assert_eq!(Product::from_str("ansible-core"), Ok(Product::AnsibleCore));
+        assert_eq!(
+            Product::from_str("ansible-foo").unwrap_err(),
+            ParseError::new("Unknown product: ansible-foo".to_string()));
+    }
+
+    #[test]
+    #[allow(non_snake_case)]
+    fn test_Product_Display() {
+        assert_eq!(format!("{}", Product::Ansible), "ansible");
+        assert_eq!(format!("{}", Product::AnsibleBase), "ansible-base");
+        assert_eq!(format!("{}", Product::AnsibleCore), "ansible-core");
+    }
+}
