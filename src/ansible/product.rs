@@ -21,14 +21,14 @@ impl fmt::Display for Product {
 }
 
 impl FromStr for Product {
-    type Err = AnsibleParseError;
+    type Err = ParseError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s {
             "ansible" => Ok(Product::Ansible),
             "ansible-base" => Ok(Product::AnsibleBase),
             "ansible-core" => Ok(Product::AnsibleCore),
-            _ => Err(AnsibleParseError::new(format!("Unknown product: {}", s))),
+            _ => Err(ParseError::new(format!("Unknown product: {}", s))),
         }
     }
 }

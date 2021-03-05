@@ -87,7 +87,7 @@ impl fmt::Display for Version {
 }
 
 impl FromStr for Version {
-    type Err = AnsibleParseError;
+    type Err = ParseError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         fn to_u8(s: &&str) -> Option<u8> {
@@ -127,7 +127,7 @@ impl FromStr for Version {
 
         let components: Vec<&str> = s.split('.').collect();
         let version = components_to_version(components);
-        version.ok_or(AnsibleParseError::new(s.to_string()))
+        version.ok_or(ParseError::new(s.to_string()))
     }
 }
 
@@ -153,10 +153,10 @@ mod tests {
             Version::new(2, 10, 3, A(6)));
         assert_eq!(
             Version::from_str("2.10.3foo1").unwrap_err(),
-            AnsibleParseError::new("2.10.3foo1".to_string()));
+            ParseError::new("2.10.3foo1".to_string()));
         assert_eq!(
             Version::from_str("2.-10.3rc1").unwrap_err(),
-            AnsibleParseError::new("2.-10.3rc1".to_string()));
+            ParseError::new("2.-10.3rc1".to_string()));
     }
 
     #[test]
