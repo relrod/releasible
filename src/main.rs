@@ -6,7 +6,7 @@ use tera::Tera;
 use std::{error::Error, fs, io};
 use std::path::{Path, PathBuf};
 
-mod ansible_version;
+mod version;
 
 lazy_static! {
     pub static ref TEMPLATES: Tera =
