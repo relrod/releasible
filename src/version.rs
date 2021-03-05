@@ -1,33 +1,14 @@
-use std::error::Error;
+use crate::ansible::error::*;
 use std::fmt;
 use std::cmp::Ordering;
 use std::str::FromStr;
-
-#[derive(Debug, Eq, PartialEq)]
-struct AnsibleVersionParseError {
-    input: String,
-}
-
-impl AnsibleVersionParseError {
-    fn new(input: String) -> AnsibleVersionParseError {
-        AnsibleVersionParseError { input }
-    }
-}
-
-impl fmt::Display for AnsibleVersionParseError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "Failed to parse: {}", self.input)
-    }
-}
-
-impl Error for AnsibleVersionParseError {}
 
 // Note: Ord doesn't really make sense for Stage alone.
 // An alpha is newer than, or older than, a GA release, depending on which
 // versions are being compared. So we implement Ord on AnsibleVersion itself
 // instead.
 #[derive(Eq, PartialEq, Copy, Clone, Debug)]
-enum Stage {
+pub enum Stage {
     /// General Availability release
     GA,
     /// Release Candidate
@@ -51,7 +32,7 @@ impl fmt::Display for Stage {
 }
 
 #[derive(Eq, PartialEq, Copy, Clone, Debug)]
-struct AnsibleVersion {
+pub struct AnsibleVersion {
     x: u8,
     y: u8,
     z: u8,
@@ -106,7 +87,7 @@ impl fmt::Display for AnsibleVersion {
 }
 
 impl FromStr for AnsibleVersion {
-    type Err = AnsibleVersionParseError;
+    type Err = AnsibleParseError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         fn to_u8(s: &&str) -> Option<u8> {
@@ -146,7 +127,7 @@ impl FromStr for AnsibleVersion {
 
         let components: Vec<&str> = s.split('.').collect();
         let version = components_to_version(components);
-        version.ok_or(AnsibleVersionParseError::new(s.to_string()))
+        version.ok_or(AnsibleParseError::new(s.to_string()))
     }
 }
 
@@ -172,10 +153,10 @@ mod tests {
             AnsibleVersion::new(2, 10, 3, A(6)));
         assert_eq!(
             AnsibleVersion::from_str("2.10.3foo1").unwrap_err(),
-            AnsibleVersionParseError::new("2.10.3foo1".to_string()));
+            AnsibleParseError::new("2.10.3foo1".to_string()));
         assert_eq!(
             AnsibleVersion::from_str("2.-10.3rc1").unwrap_err(),
-            AnsibleVersionParseError::new("2.-10.3rc1".to_string()));
+            AnsibleParseError::new("2.-10.3rc1".to_string()));
     }
 
     #[test]

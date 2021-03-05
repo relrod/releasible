@@ -6,6 +6,7 @@ use tera::Tera;
 use std::{error::Error, fs, io};
 use std::path::{Path, PathBuf};
 
+mod ansible;
 mod version;
 
 lazy_static! {
