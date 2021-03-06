@@ -1,12 +1,14 @@
 #[macro_use]
 extern crate lazy_static;
 
+mod ansible;
+mod pypi;
+
 use tera::Context;
 use tera::Tera;
+use std::ops::Bound;
 use std::{error::Error, fs, io};
 use std::path::{Path, PathBuf};
-
-mod ansible;
 
 lazy_static! {
     pub static ref TEMPLATES: Tera =
@@ -55,7 +57,8 @@ fn unimplemented() -> Context {
     Context::new()
 }
 
-fn main() -> io::Result<()> {
+#[tokio::main]
+async fn main() -> io::Result<()> {
     let path = Path::new("out/");
     fs::create_dir_all(path)?;
 
@@ -85,5 +88,11 @@ fn main() -> io::Result<()> {
             TEMPLATES.render(filename, &ctx));
     }
 
+    println!(
+        "{:?}",
+        ansible::Release::latest_from_pypi_response(
+            ansible::Product::AnsibleBase,
+            (Bound::Included(ansible::Version::new3(2, 10, 0 , ansible::Stage::Dev(0))),
+             Bound::Excluded(ansible::Version::new3(2, 11, 0 , ansible::Stage::Dev(0))))).await);
     Ok(())
 }
