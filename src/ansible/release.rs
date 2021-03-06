@@ -1,14 +1,10 @@
 use crate::ansible;
-use crate::ansible::Stage;
 use crate::ansible::Product;
 use crate::ansible::Version;
 use crate::pypi;
 
 use chrono::prelude::*;
-use serde_json::Value;
-use serde_json::map::Map;
 use std::ops::RangeBounds;
-use std::collections::BTreeMap;
 
 /// Represents a given release of an Ansible product such as `ansible`,
 /// `ansible-base`, or `ansible-core`.
