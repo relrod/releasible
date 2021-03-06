@@ -1,4 +1,4 @@
-use crate::ansible::error::*;
+use crate::ansible;
 use std::fmt;
 use std::str::FromStr;
 
@@ -21,14 +21,14 @@ impl fmt::Display for Product {
 }
 
 impl FromStr for Product {
-    type Err = ParseError;
+    type Err = ansible::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s {
             "ansible" => Ok(Product::Ansible),
             "ansible-base" => Ok(Product::AnsibleBase),
             "ansible-core" => Ok(Product::AnsibleCore),
-            _ => Err(ParseError::new(format!("Unknown product: {}", s))),
+            _ => Err(ansible::Error::parse_error(format!("Unknown product: {}", s))),
         }
     }
 }
@@ -45,7 +45,7 @@ mod tests {
         assert_eq!(Product::from_str("ansible-core"), Ok(Product::AnsibleCore));
         assert_eq!(
             Product::from_str("ansible-foo").unwrap_err(),
-            ParseError::new("Unknown product: ansible-foo".to_string()));
+            ansible::Error::parse_error("Unknown product: ansible-foo".to_string()));
     }
 
     #[test]
