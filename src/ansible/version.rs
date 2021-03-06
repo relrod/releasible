@@ -1,4 +1,4 @@
-use crate::ansible::error::*;
+use crate::ansible;
 use serde_with::DeserializeFromStr;
 use std::fmt;
 use std::cmp::Ordering;
@@ -18,6 +18,8 @@ pub enum Stage {
     A(u8),
     /// Beta
     B(u8),
+    /// dev?
+    Dev(u8),
 }
 
 impl fmt::Display for Stage {
@@ -27,6 +29,7 @@ impl fmt::Display for Stage {
             Stage::RC(v) => format!("rc{}", v),
             Stage::A(v) => format!("a{}", v),
             Stage::B(v) => format!("b{}", v),
+            Stage::Dev(v) => format!("dev{}", v),
         };
         write!(f, "{}", out)
     }
@@ -54,8 +57,21 @@ impl Version {
 
 impl Ord for Version {
     fn cmp(&self, other: &Self) -> Ordering {
-        if self.numbers != other.numbers {
-            return self.numbers.cmp(&other.numbers);
+        fn drop_right_zeros(vec: Vec<u8>) -> Vec<u8> {
+            vec
+                .into_iter()
+                .rev()
+                .skip_while(|x| *x == 0)
+                .collect::<Vec<u8>>()
+                .into_iter()
+                .rev()
+                .collect()
+        }
+
+        let me = drop_right_zeros(self.numbers.clone());
+        let notme = drop_right_zeros(other.numbers.clone());
+        if me != notme {
+            return me.cmp(&notme);
         }
 
         // If we're still here, we compare stage only.
@@ -68,10 +84,13 @@ impl Ord for Version {
             (RC(ref sv), RC(ref ov)) => sv.cmp(ov),
             (RC(_), _) => Ordering::Greater,
             (A(ref sv), A(ref ov)) => sv.cmp(ov),
+            (A(_), Dev(_)) => Ordering::Greater,
             (A(_), _) => Ordering::Less,
             (B(ref sv), B(ref ov)) => sv.cmp(ov),
             (B(_), A(_)) => Ordering::Greater,
             (B(_), _) => Ordering::Less,
+            (Dev(ref sv), Dev(ref ov)) => sv.cmp(ov),
+            (Dev(_), _) => Ordering::Less,
         }
     }
 }
@@ -97,9 +116,24 @@ impl fmt::Display for Version {
     }
 }
 
-impl FromStr for Version {
-    type Err = ParseError;
 
+impl FromStr for Version {
+    type Err = ansible::Error;
+
+    /// Parse an Ansible version number into something we can compare and
+    /// (usually, but not always) output the same way it was originally given.
+    ///
+    /// NOTE: We do NOT aim to be a full
+    /// [PEP440](https://www.python.org/dev/peps/pep-0440/) version parser, not
+    /// even close. This parser will break with more complex things like "local"
+    /// versions, or combining segments (Python considers `2.7.0rc1.post0.dev6`
+    /// to be a valid version number).
+    ///
+    /// We implement the pieces that Ansible, ansible-base, and ansible-core use
+    /// and nothing more. This could change some day (a separate library/project
+    /// with full PEP440 parsing might make for an interesting side project),
+    /// but for now, we expect Ansible/ansible-base/ansible-core versions to
+    /// remain consistent and we only aim to handle those.
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         fn to_u8(s: &&str) -> Option<u8> {
             s.parse::<u8>().ok()
@@ -111,13 +145,35 @@ impl FromStr for Version {
                 return Some((last, Stage::GA))
             }
 
+            // Handle an edge case: There was a release in the past, 2.7.0.dev0,
+            // which had a . before the stage. We treat this as: 2.7.0.0dev0,
+            // which python `packaging` says is okay:
+            //
+            // In [1]: import packaging.version as v
+            // In [2]: v.parse("2.7.0.dev0") == v.parse("2.7.0.0dev0")
+            // Out[2]: True
+            //
+            // This unfortunately means that we lose: display(from_str(x)) == x
+            // but this seems like the easiest way to deal with the edge case.
+            // (It is worth noting that Python loses that identity too, but in
+            // the opposite direction where they add the dot):
+            //
+            // In [3]: v.parse("2.7.0dev0")
+            // Out[3]: <Version('2.7.0.dev0')>
+            let input = format!(
+                "{}{}",
+                if s.starts_with(char::is_numeric) { "" } else { "0" },
+                s);
+
             let (vec, stage_con): (Vec<&str>, fn(u8) -> Stage) =
-                if s.contains("rc") {
-                    (s.split("rc").collect(), Stage::RC)
-                } else if s.contains("b") {
-                    (s.split("b").collect(), Stage::B)
-                } else if s.contains("a") {
-                    (s.split("a").collect(), Stage::A)
+                if input.contains("rc") {
+                    (input.split("rc").collect(), Stage::RC)
+                } else if input.contains("b") {
+                    (input.split("b").collect(), Stage::B)
+                } else if input.contains("a") {
+                    (input.split("a").collect(), Stage::A)
+                } else if input.contains("dev") {
+                    (input.split("dev").collect(), Stage::Dev)
                 } else {
                     return None
                 };
@@ -144,7 +200,7 @@ impl FromStr for Version {
 
         let components: Vec<&str> = s.split('.').collect();
         let version = components_to_version(components);
-        version.ok_or(ParseError::new(s.to_string()))
+        version.ok_or(ansible::Error::parse_error(s.to_string()))
     }
 }
 
@@ -170,10 +226,16 @@ mod tests {
             Version::new3(2, 10, 3, A(6)));
         assert_eq!(
             Version::from_str("2.10.3foo1").unwrap_err(),
-            ParseError::new("2.10.3foo1".to_string()));
+            ansible::Error::parse_error("2.10.3foo1".to_string()));
         assert_eq!(
             Version::from_str("2.-10.3rc1").unwrap_err(),
-            ParseError::new("2.-10.3rc1".to_string()));
+            ansible::Error::parse_error("2.-10.3rc1".to_string()));
+        assert_eq!(
+            Version::from_str("2.10.3dev1").unwrap(),
+            Version::new3(2, 10, 3, Dev(1)));
+        assert_eq!(
+            Version::from_str("2.10.3.dev1").unwrap(),
+            Version::new(vec![2, 10, 3, 0], Dev(1)));
     }
 
     #[test]
@@ -214,6 +276,12 @@ mod tests {
         assert!(Version::new3(3, 12, 5, RC(3)) >= Version::new3(2, 12, 5, RC(3)));
         assert!(Version::new3(3, 12, 5, RC(3)) > Version::new3(2, 12, 5, RC(3)));
         assert!(Version::new3(3, 12, 5, RC(3)) < Version::new3(9, 12, 5, RC(3)));
+
+        assert!(Version::new3(3, 12, 5, Dev(3)) < Version::new3(9, 12, 5, RC(3)));
+        assert!(Version::new3(3, 12, 5, Dev(3)) == Version::new3(3, 12, 5, Dev(3)));
+        assert!(Version::new3(3, 12, 5, Dev(3)) < Version::new3(9, 12, 5, A(3)));
+
+        assert!(Version::new(vec![2, 7, 0, 0], Dev(0)) < Version::new(vec![2, 7, 0], GA));
     }
 
     #[test]
@@ -223,5 +291,6 @@ mod tests {
         assert_eq!(format!("{}", Version::new3(2, 12, 5, RC(1))), "2.12.5rc1");
         assert_eq!(format!("{}", Version::new3(2, 11, 0, B(1))), "2.11.0b1");
         assert_eq!(format!("{}", Version::new3(2, 11, 0, A(1))), "2.11.0a1");
+        assert_eq!(format!("{}", Version::new3(2, 11, 0, Dev(1))), "2.11.0dev1");
     }
 }
