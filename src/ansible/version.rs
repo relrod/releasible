@@ -1,4 +1,5 @@
 use crate::ansible::error::*;
+use serde_with::DeserializeFromStr;
 use std::fmt;
 use std::cmp::Ordering;
 use std::str::FromStr;
@@ -7,7 +8,7 @@ use std::str::FromStr;
 // An alpha is newer than, or older than, a GA release, depending on which
 // versions are being compared. So we implement Ord on AnsibleVersion itself
 // instead.
-#[derive(Eq, PartialEq, Copy, Clone, Debug)]
+#[derive(Eq, PartialEq, Clone, Debug, Hash)]
 pub enum Stage {
     /// General Availability release
     GA,
@@ -31,35 +32,36 @@ impl fmt::Display for Stage {
     }
 }
 
-#[derive(Eq, PartialEq, Copy, Clone, Debug)]
+/// Ansible versions are all over the place. Some old versions had just two
+/// components in the version. Some had 4. Most have 3. Because of the
+/// inconsistency, the version numbers are backed by a dynamically-sized vector
+/// (and the stage is kept separately).
+#[derive(Eq, PartialEq, Clone, Debug, DeserializeFromStr, Hash)]
 pub struct Version {
-    x: u8,
-    y: u8,
-    z: u8,
-    stage: Stage,
+    pub numbers: Vec<u8>,
+    pub stage: Stage,
 }
 
 impl Version {
-    fn new(x: u8, y: u8, z: u8, stage: Stage) -> Version {
-        Version { x, y, z, stage }
+    pub fn new(numbers: Vec<u8>, stage: Stage) -> Version {
+        Version { numbers, stage }
+    }
+
+    pub fn new3(x: u8, y: u8, z: u8, stage: Stage) -> Version {
+        Version { numbers: vec![x, y, z], stage: stage }
     }
 }
 
 impl Ord for Version {
     fn cmp(&self, other: &Self) -> Ordering {
-        if self.x != other.x {
-            return self.x.cmp(&other.x);
+        if self.numbers != other.numbers {
+            return self.numbers.cmp(&other.numbers);
         }
-        if self.y != other.y {
-            return self.y.cmp(&other.y);
-        }
-        if self.z != other.z {
-            return self.z.cmp(&other.z);
-        }
+
         // If we're still here, we compare stage only.
         // We have equal x.y.z numbers at this point.
         use Stage::*;
-        match (self.stage, other.stage) {
+        match (&self.stage, &other.stage) {
             (GA, GA) => Ordering::Equal,
             (GA, _) => Ordering::Greater,
             (RC(_), GA) => Ordering::Less,
@@ -82,7 +84,16 @@ impl PartialOrd for Version {
 
 impl fmt::Display for Version {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{}.{}.{}{}", self.x, self.y, self.z, self.stage)
+        let nums = &self.numbers;
+        write!(
+            f,
+            "{}{}",
+            nums
+                .into_iter()
+                .map(|x| x.to_string())
+                .collect::<Vec<String>>()
+                .join("."),
+            self.stage)
     }
 }
 
@@ -94,10 +105,10 @@ impl FromStr for Version {
             s.parse::<u8>().ok()
         }
 
-        fn to_z_and_stage(s: &&str) -> Option<(u8, Stage)> {
+        fn to_last_and_stage(s: &&str) -> Option<(u8, Stage)> {
             // If it's fully numeric, this must be a GA release.
-            if let Some(z) = s.parse::<u8>().ok() {
-                return Some((z, Stage::GA))
+            if let Some(last) = s.parse::<u8>().ok() {
+                return Some((last, Stage::GA))
             }
 
             let (vec, stage_con): (Vec<&str>, fn(u8) -> Stage) =
@@ -111,18 +122,24 @@ impl FromStr for Version {
                     return None
                 };
 
-            let z = vec.get(0).and_then(to_u8)?;
+            let last = vec.get(0).and_then(to_u8)?;
             let stage_rel = vec.get(1).and_then(to_u8)?;
-            Some((z, stage_con(stage_rel)))
+            Some((last, stage_con(stage_rel)))
         }
 
         fn components_to_version(
             components: Vec<&str>,
         ) -> Option<Version> {
-            let x = components.get(0).and_then(to_u8)?;
-            let y = components.get(1).and_then(to_u8)?;
-            let (z, stage) = components.get(2).and_then(to_z_and_stage)?;
-            Some(Version::new(x, y, z, stage))
+            let (last, nums) = components.split_last()?;
+            // mut because we need to add, e.g.,  the '3' of '3rc1' to it.
+            let mut num_comps: Vec<u8> =
+                nums
+                .into_iter()
+                .map(to_u8)
+                .collect::<Option<Vec<u8>>>()?;
+            let (last_num, stage) = to_last_and_stage(last)?;
+            num_comps.push(last_num);
+            Some(Version::new(num_comps, stage))
         }
 
         let components: Vec<&str> = s.split('.').collect();
@@ -141,16 +158,16 @@ mod tests {
     fn test_Version_FromStr() {
         assert_eq!(
             Version::from_str("2.10.0").unwrap(),
-            Version::new(2, 10, 0, GA));
+            Version::new3(2, 10, 0, GA));
         assert_eq!(
             Version::from_str("2.10.3rc1").unwrap(),
-            Version::new(2, 10, 3, RC(1)));
+            Version::new3(2, 10, 3, RC(1)));
         assert_eq!(
             Version::from_str("2.10.3b1").unwrap(),
-            Version::new(2, 10, 3, B(1)));
+            Version::new3(2, 10, 3, B(1)));
         assert_eq!(
             Version::from_str("2.10.3a6").unwrap(),
-            Version::new(2, 10, 3, A(6)));
+            Version::new3(2, 10, 3, A(6)));
         assert_eq!(
             Version::from_str("2.10.3foo1").unwrap_err(),
             ParseError::new("2.10.3foo1".to_string()));
@@ -162,49 +179,49 @@ mod tests {
     #[test]
     #[allow(non_snake_case)]
     fn test_Version_ordering() {
-        assert!(Version::new(2, 8, 4, GA) == Version::new(2, 8, 4, GA));
-        assert!(Version::new(2, 8, 4, GA) >= Version::new(2, 8, 4, GA));
-        assert!(Version::new(2, 8, 4, GA) >= Version::new(2, 8, 4, A(3)));
-        assert!(Version::new(2, 8, 3, GA) <= Version::new(2, 8, 4, GA));
-        assert!(Version::new(2, 8, 3, GA) < Version::new(2, 8, 4, GA));
-        assert!(Version::new(2, 8, 4, GA) < Version::new(2, 9, 10, RC(1)));
-        assert!(Version::new(2, 12, 0, GA) > Version::new(2, 11, 99, GA));
-        assert!(Version::new(2, 12, 0, GA) > Version::new(2, 11, 99, B(200)));
-        assert!(Version::new(2, 12, 5, GA) > Version::new(2, 12, 4, B(200)));
-        assert!(Version::new(2, 12, 5, GA) > Version::new(2, 12, 4, GA));
+        assert!(Version::new3(2, 8, 4, GA) == Version::new3(2, 8, 4, GA));
+        assert!(Version::new3(2, 8, 4, GA) >= Version::new3(2, 8, 4, GA));
+        assert!(Version::new3(2, 8, 4, GA) >= Version::new3(2, 8, 4, A(3)));
+        assert!(Version::new3(2, 8, 3, GA) <= Version::new3(2, 8, 4, GA));
+        assert!(Version::new3(2, 8, 3, GA) < Version::new3(2, 8, 4, GA));
+        assert!(Version::new3(2, 8, 4, GA) < Version::new3(2, 9, 10, RC(1)));
+        assert!(Version::new3(2, 12, 0, GA) > Version::new3(2, 11, 99, GA));
+        assert!(Version::new3(2, 12, 0, GA) > Version::new3(2, 11, 99, B(200)));
+        assert!(Version::new3(2, 12, 5, GA) > Version::new3(2, 12, 4, B(200)));
+        assert!(Version::new3(2, 12, 5, GA) > Version::new3(2, 12, 4, GA));
 
-        assert!(Version::new(2, 11, 0, B(1)) == Version::new(2, 11, 0, B(1)));
-        assert!(Version::new(2, 11, 0, B(2)) > Version::new(2, 11, 0, B(1)));
-        assert!(Version::new(2, 11, 0, B(2)) < Version::new(2, 11, 0, B(3)));
-        assert!(Version::new(2, 11, 0, B(2)) < Version::new(2, 11, 9, RC(3)));
-        assert!(Version::new(2, 11, 0, B(2)) < Version::new(2, 11, 9, A(1)));
-        assert!(Version::new(2, 11, 0, B(2)) > Version::new(2, 11, 0, A(1)));
-        assert!(Version::new(2, 11, 0, B(2)) < Version::new(2, 11, 0, GA));
-        assert!(Version::new(2, 11, 9, B(2)) < Version::new(2, 11, 9, RC(3)));
+        assert!(Version::new3(2, 11, 0, B(1)) == Version::new3(2, 11, 0, B(1)));
+        assert!(Version::new3(2, 11, 0, B(2)) > Version::new3(2, 11, 0, B(1)));
+        assert!(Version::new3(2, 11, 0, B(2)) < Version::new3(2, 11, 0, B(3)));
+        assert!(Version::new3(2, 11, 0, B(2)) < Version::new3(2, 11, 9, RC(3)));
+        assert!(Version::new3(2, 11, 0, B(2)) < Version::new3(2, 11, 9, A(1)));
+        assert!(Version::new3(2, 11, 0, B(2)) > Version::new3(2, 11, 0, A(1)));
+        assert!(Version::new3(2, 11, 0, B(2)) < Version::new3(2, 11, 0, GA));
+        assert!(Version::new3(2, 11, 9, B(2)) < Version::new3(2, 11, 9, RC(3)));
 
-        assert!(Version::new(2, 11, 0, A(1)) < Version::new(2, 11, 0, B(1)));
-        assert!(Version::new(2, 11, 0, A(1)) < Version::new(2, 11, 0, GA));
-        assert!(Version::new(2, 11, 0, A(1)) < Version::new(2, 11, 0, A(2)));
-        assert!(Version::new(2, 12, 0, A(1)) > Version::new(2, 11, 0, A(2)));
-        assert!(Version::new(2, 12, 0, A(1)) > Version::new(2, 11, 0, A(1)));
-        assert!(Version::new(2, 11, 0, A(1)) < Version::new(2, 11, 0, RC(3)));
+        assert!(Version::new3(2, 11, 0, A(1)) < Version::new3(2, 11, 0, B(1)));
+        assert!(Version::new3(2, 11, 0, A(1)) < Version::new3(2, 11, 0, GA));
+        assert!(Version::new3(2, 11, 0, A(1)) < Version::new3(2, 11, 0, A(2)));
+        assert!(Version::new3(2, 12, 0, A(1)) > Version::new3(2, 11, 0, A(2)));
+        assert!(Version::new3(2, 12, 0, A(1)) > Version::new3(2, 11, 0, A(1)));
+        assert!(Version::new3(2, 11, 0, A(1)) < Version::new3(2, 11, 0, RC(3)));
 
-        assert!(Version::new(2, 12, 5, RC(3)) < Version::new(2, 12, 6, GA));
-        assert!(Version::new(2, 12, 5, RC(3)) > Version::new(2, 12, 5, B(3)));
-        assert!(Version::new(2, 12, 5, RC(3)) == Version::new(2, 12, 5, RC(3)));
-        assert!(Version::new(2, 12, 5, RC(3)) <= Version::new(2, 12, 5, RC(3)));
-        assert!(Version::new(2, 12, 5, RC(5)) <= Version::new(2, 12, 5, RC(9)));
-        assert!(Version::new(3, 12, 5, RC(3)) >= Version::new(2, 12, 5, RC(3)));
-        assert!(Version::new(3, 12, 5, RC(3)) > Version::new(2, 12, 5, RC(3)));
-        assert!(Version::new(3, 12, 5, RC(3)) < Version::new(9, 12, 5, RC(3)));
+        assert!(Version::new3(2, 12, 5, RC(3)) < Version::new3(2, 12, 6, GA));
+        assert!(Version::new3(2, 12, 5, RC(3)) > Version::new3(2, 12, 5, B(3)));
+        assert!(Version::new3(2, 12, 5, RC(3)) == Version::new3(2, 12, 5, RC(3)));
+        assert!(Version::new3(2, 12, 5, RC(3)) <= Version::new3(2, 12, 5, RC(3)));
+        assert!(Version::new3(2, 12, 5, RC(5)) <= Version::new3(2, 12, 5, RC(9)));
+        assert!(Version::new3(3, 12, 5, RC(3)) >= Version::new3(2, 12, 5, RC(3)));
+        assert!(Version::new3(3, 12, 5, RC(3)) > Version::new3(2, 12, 5, RC(3)));
+        assert!(Version::new3(3, 12, 5, RC(3)) < Version::new3(9, 12, 5, RC(3)));
     }
 
     #[test]
     #[allow(non_snake_case)]
     fn test_Version_display() {
-        assert_eq!(format!("{}", Version::new(2, 12, 5, GA)), "2.12.5");
-        assert_eq!(format!("{}", Version::new(2, 12, 5, RC(1))), "2.12.5rc1");
-        assert_eq!(format!("{}", Version::new(2, 11, 0, B(1))), "2.11.0b1");
-        assert_eq!(format!("{}", Version::new(2, 11, 0, A(1))), "2.11.0a1");
+        assert_eq!(format!("{}", Version::new3(2, 12, 5, GA)), "2.12.5");
+        assert_eq!(format!("{}", Version::new3(2, 12, 5, RC(1))), "2.12.5rc1");
+        assert_eq!(format!("{}", Version::new3(2, 11, 0, B(1))), "2.11.0b1");
+        assert_eq!(format!("{}", Version::new3(2, 11, 0, A(1))), "2.11.0a1");
     }
 }
