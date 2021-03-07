@@ -4,11 +4,13 @@ use crate::ansible::Version;
 use crate::pypi;
 
 use chrono::prelude::*;
+use std::fmt;
+use serde::Serialize;
 use std::ops::RangeBounds;
 
 /// Represents a given release of an Ansible product such as `ansible`,
 /// `ansible-base`, or `ansible-core`.
-#[derive(Eq, PartialEq, Clone, Debug)]
+#[derive(Eq, PartialEq, Clone, Debug, Serialize)]
 pub struct Release {
     product: Product,
     version: Version,
@@ -59,5 +61,16 @@ impl Release {
                 product,
                 version.clone(),
                 artifact.upload_time_iso_8601))
+    }
+}
+
+impl fmt::Display for Release {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(
+            f,
+            "<Release: {} {} on {}>",
+            self.product,
+            self.version,
+            self.timestamp)
     }
 }

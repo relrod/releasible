@@ -1,5 +1,5 @@
 use crate::ansible;
-use serde_with::DeserializeFromStr;
+use serde_with::{DeserializeFromStr, SerializeDisplay};
 use std::fmt;
 use std::cmp::Ordering;
 use std::str::FromStr;
@@ -8,7 +8,7 @@ use std::str::FromStr;
 // An alpha is newer than, or older than, a GA release, depending on which
 // versions are being compared. So we implement Ord on AnsibleVersion itself
 // instead.
-#[derive(Eq, PartialEq, Clone, Debug, Hash)]
+#[derive(Eq, PartialEq, Clone, Debug, Hash, SerializeDisplay)]
 pub enum Stage {
     /// General Availability release
     GA,
@@ -39,7 +39,7 @@ impl fmt::Display for Stage {
 /// components in the version. Some had 4. Most have 3. Because of the
 /// inconsistency, the version numbers are backed by a dynamically-sized vector
 /// (and the stage is kept separately).
-#[derive(Eq, PartialEq, Clone, Debug, DeserializeFromStr, Hash)]
+#[derive(Eq, PartialEq, Clone, Debug, DeserializeFromStr, Hash, SerializeDisplay)]
 pub struct Version {
     pub numbers: Vec<u8>,
     pub stage: Stage,

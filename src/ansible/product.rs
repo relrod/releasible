@@ -1,8 +1,9 @@
 use crate::ansible;
+use serde_with::{DeserializeFromStr, SerializeDisplay};
 use std::fmt;
 use std::str::FromStr;
 
-#[derive(Eq, PartialEq, Copy, Clone, Debug)]
+#[derive(Eq, PartialEq, Copy, Clone, Debug, DeserializeFromStr, SerializeDisplay)]
 pub enum Product {
     Ansible,
     AnsibleBase,
