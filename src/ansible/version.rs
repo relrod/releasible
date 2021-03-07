@@ -225,11 +225,11 @@ mod tests {
             Version::from_str("2.10.3a6").unwrap(),
             Version::new3(2, 10, 3, A(6)));
         assert_eq!(
-            Version::from_str("2.10.3foo1").unwrap_err(),
-            ansible::Error::parse_error("2.10.3foo1".to_string()));
+            Version::from_str("2.10.3foo1").unwrap_err().get_parse_error(),
+            Some("2.10.3foo1".to_string()));
         assert_eq!(
-            Version::from_str("2.-10.3rc1").unwrap_err(),
-            ansible::Error::parse_error("2.-10.3rc1".to_string()));
+            Version::from_str("2.-10.3rc1").unwrap_err().get_parse_error(),
+            Some("2.-10.3rc1".to_string()));
         assert_eq!(
             Version::from_str("2.10.3dev1").unwrap(),
             Version::new3(2, 10, 3, Dev(1)));

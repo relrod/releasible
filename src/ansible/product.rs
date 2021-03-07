@@ -41,12 +41,12 @@ mod tests {
     #[test]
     #[allow(non_snake_case)]
     fn test_Product_FromStr() {
-        assert_eq!(Product::from_str("ansible"), Ok(Product::Ansible));
-        assert_eq!(Product::from_str("ansible-base"), Ok(Product::AnsibleBase));
-        assert_eq!(Product::from_str("ansible-core"), Ok(Product::AnsibleCore));
+        assert_eq!(Product::from_str("ansible").ok(), Some(Product::Ansible));
+        assert_eq!(Product::from_str("ansible-base").ok(), Some(Product::AnsibleBase));
+        assert_eq!(Product::from_str("ansible-core").ok(), Some(Product::AnsibleCore));
         assert_eq!(
-            Product::from_str("ansible-foo").unwrap_err(),
-            ansible::Error::parse_error("Unknown product: ansible-foo".to_string()));
+            Product::from_str("ansible-foo").unwrap_err().get_parse_error(),
+            Some("Unknown product: ansible-foo".to_string()));
     }
 
     #[test]

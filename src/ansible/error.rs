@@ -13,6 +13,34 @@ impl Error {
     pub fn parse_error(input: String) -> Error {
         Error::ParseError(input)
     }
+
+    pub fn get_parse_error(&self) -> Option<String> {
+        match self {
+            Error::ParseError(s) => Some(s.to_string()),
+            _ => None,
+        }
+    }
+
+    pub fn is_parse_error(&self) -> bool {
+        match self {
+            Error::ParseError(_) => true,
+            _ => false,
+        }
+    }
+
+    pub fn is_no_version_found(&self) -> bool {
+        match self {
+            Error::NoVersionFound => true,
+            _ => false,
+        }
+    }
+
+    pub fn is_reqwest_error(&self) -> bool {
+        match self {
+            Error::ReqwestError(_) => true,
+            _ => false,
+        }
+    }
 }
 
 impl fmt::Display for Error {
@@ -25,7 +53,14 @@ impl fmt::Display for Error {
     }
 }
 
-impl StdError for Error {}
+impl StdError for Error {
+    fn source(&self) -> Option<&(dyn StdError + 'static)> {
+        match self {
+            Error::ReqwestError(e) => Some(e),
+            _ => None,
+        }
+    }
+}
 
 impl From<reqwest::Error> for Error {
     #[inline]
