@@ -1,3 +1,17 @@
+//! This module contains types and implementations which represent the version
+//! of an Ansible product (such as ansible, ansible-core, ansible-base).
+//!
+//! This is a highly opinionated module and currently very specific to our needs
+//! in Ansible and Releasible. In the future, it should likely be replaced by a
+//! full [PEP440](https://www.python.org/dev/peps/pep-0440/) version parser, but
+//! right now, **it does not aim to be that**.
+//!
+//! ```
+//! use releasible::ansible::*;
+//! use std::str::FromStr;
+//! let v = Version::from_str("2.7.0rc1").unwrap();
+//! assert_eq!(v, Version::new3(2, 7, 0, Stage::RC(1)));
+//! ```
 use crate::ansible;
 use serde_with::{DeserializeFromStr, SerializeDisplay};
 use std::fmt;
@@ -8,13 +22,19 @@ use std::str::FromStr;
 // An alpha is newer than, or older than, a GA release, depending on which
 // versions are being compared. So we implement Ord on AnsibleVersion itself
 // instead.
+/// A release stage such as general availability, release candidate, etc.
+///
+/// `ansible < 2.10`, `ansible-base`, and `ansible-core` all do not currently
+/// use alpha or dev releases. `ansible-core` uses beta releases for each new
+/// y-release (ansible-core 2.11.0b1, for example). Everything else is GA or
+/// RC.
 #[derive(Eq, PartialEq, Clone, Debug, Hash, SerializeDisplay)]
 pub enum Stage {
     /// General Availability release
     GA,
     /// Release Candidate
     RC(u8),
-    /// Alpha (currently not used by Ansible)
+    /// Alpha (currently not used by ansible-{core,base} or ansible < 2.10)
     A(u8),
     /// Beta
     B(u8),
@@ -46,15 +66,31 @@ pub struct Version {
 }
 
 impl Version {
+    /// Construct a new `Version` given a `Vec<u8>` of version numbers and a
+    /// `Stage`.
     pub fn new(numbers: Vec<u8>, stage: Stage) -> Version {
         Version { numbers, stage }
     }
 
+    /// Construct a new `Version` given the `x`, `y`, and `z` components of the
+    /// version and a `Stage`.
+    ///
+    /// For example, `2.9.10rc1` is written as:
+    /// ```
+    /// use releasible::ansible::*;
+    /// let ver = Version::new3(2, 9, 10, Stage::RC(1));
+    /// assert_eq!(format!("{}", ver), "2.9.10rc1");
+    /// ```
     pub fn new3(x: u8, y: u8, z: u8, stage: Stage) -> Version {
         Version { numbers: vec![x, y, z], stage: stage }
     }
 }
 
+/// Basic version ordering. As with the rest of this module, this does not
+/// implement or even reference PEP440's version ordering implementation. It is
+/// simply implemented in a way that makes sense for how Ansible products are
+/// currently versioned. In the future, a full PEP440 library with proper, real
+/// ordering would be nice and this whole module can/should be replaced by that.
 impl Ord for Version {
     fn cmp(&self, other: &Self) -> Ordering {
         fn drop_right_zeros(vec: Vec<u8>) -> Vec<u8> {
@@ -116,24 +152,25 @@ impl fmt::Display for Version {
     }
 }
 
-
+/// Parse an Ansible version number into something we can compare and
+/// (usually, but not always) output (via `Display`) the same way it was
+/// originally given.
+///
+/// NOTE: As mentioned in the module documentation, we do NOT aim to be a full
+/// [PEP440](https://www.python.org/dev/peps/pep-0440/) version parser, not
+/// even close. This parser will break with more complex things like "local"
+/// versions, or combining segments (e.g. Python considers `2.7.0rc1.post0.dev6`
+/// to be a valid version number). We only allow simple versions like `2.7.0` or
+/// `2.7.0rc1`.
+///
+/// We implement the pieces that Ansible, ansible-base, and ansible-core use
+/// and nothing more. This could change some day (a separate library/project
+/// with full PEP440 parsing might make for an interesting side project),
+/// but for now, we expect Ansible/ansible-base/ansible-core versions to
+/// remain consistent and we only aim to handle those.
 impl FromStr for Version {
     type Err = ansible::Error;
 
-    /// Parse an Ansible version number into something we can compare and
-    /// (usually, but not always) output the same way it was originally given.
-    ///
-    /// NOTE: We do NOT aim to be a full
-    /// [PEP440](https://www.python.org/dev/peps/pep-0440/) version parser, not
-    /// even close. This parser will break with more complex things like "local"
-    /// versions, or combining segments (Python considers `2.7.0rc1.post0.dev6`
-    /// to be a valid version number).
-    ///
-    /// We implement the pieces that Ansible, ansible-base, and ansible-core use
-    /// and nothing more. This could change some day (a separate library/project
-    /// with full PEP440 parsing might make for an interesting side project),
-    /// but for now, we expect Ansible/ansible-base/ansible-core versions to
-    /// remain consistent and we only aim to handle those.
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         fn to_u8(s: &&str) -> Option<u8> {
             s.parse::<u8>().ok()
