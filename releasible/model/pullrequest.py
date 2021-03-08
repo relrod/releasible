@@ -139,6 +139,13 @@ class PullRequest:
 
         return needs_changelog
 
+    @property
+    def is_docs(self):
+        labels = [x['name'] for x in self.pr.get('labels', [])]
+        if all(x.path.startswith('docs/docsite') for x in self.diff):
+            if 'docs' in labels:
+                return True
+        return False
 
 @dataclass
 class Backport(PullRequest):

@@ -34,6 +34,9 @@
                   {% if bp.is_missing_changelog %}
                     <span class="badge bg-warning text-dark">changelog</span>
                   {% endif %}
+                  {% if bp.is_docs %}
+                    <span class="badge bg-info text-dark">docs</span>
+                  {% endif %}
                 </td>
                 <td><a href="{{ bp.pr['user']['html_url'] }}">@{{ bp.pr['user']['login'] }}</a></td>
                 <td>
