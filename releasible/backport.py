@@ -100,7 +100,11 @@ class BackportFinder(GitHubAPICall):
             url = 'https://api.github.com/repos/{0}/commits/{1}/pulls?per_page=100'.format(
                 repo,
                 sha)
-            prs += await self.get(url)
+            try:
+                prs += await self.get(url)
+            except Exception as e:
+                print(e)
+                pass
 
         # We have to query the actual pull request endpoint, otherwise we lack
         # the fields we use later for scoring (comments, review_comments, etc.)

@@ -21,8 +21,12 @@ class GitHubAPICall:
             }
         ) as resp:
             if resp.status != 200:
+                text = await resp.text()
                 raise Exception(
-                    '{0} got status {1}'.format(endpoint, resp.status))
+                    '{0} got status {1}: {2}'.format(
+                        endpoint,
+                        resp.status,
+                        text))
 
             self.calls += 1
             self.link = resp.headers.get('link')
