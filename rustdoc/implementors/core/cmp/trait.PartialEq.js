@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["releasible"] = [{"text":"impl PartialEq&lt;Product&gt; for Product","synthetic":false,"types":[]},{"text":"impl PartialEq&lt;Release&gt; for Release","synthetic":false,"types":[]},{"text":"impl PartialEq&lt;Stage&gt; for Stage","synthetic":false,"types":[]},{"text":"impl PartialEq&lt;Version&gt; for Version","synthetic":false,"types":[]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

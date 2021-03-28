@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["releasible"] = [{"text":"impl StructuralPartialEq for Product","synthetic":false,"types":[]},{"text":"impl StructuralPartialEq for Release","synthetic":false,"types":[]},{"text":"impl StructuralPartialEq for Stage","synthetic":false,"types":[]},{"text":"impl StructuralPartialEq for Version","synthetic":false,"types":[]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

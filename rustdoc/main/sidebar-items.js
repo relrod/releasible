@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["index",""],["main",""],["unimplemented",""],["write_template_file",""]],"struct":[["TEMPLATES",""]]});

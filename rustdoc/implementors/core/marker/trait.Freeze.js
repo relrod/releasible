@@ -1,0 +1,4 @@
+(function() {var implementors = {};
+implementors["main"] = [{"text":"impl Freeze for TEMPLATES","synthetic":true,"types":[]}];
+implementors["releasible"] = [{"text":"impl Freeze for Error","synthetic":true,"types":[]},{"text":"impl Freeze for Product","synthetic":true,"types":[]},{"text":"impl Freeze for Release","synthetic":true,"types":[]},{"text":"impl Freeze for Stage","synthetic":true,"types":[]},{"text":"impl Freeze for Version","synthetic":true,"types":[]},{"text":"impl Freeze for Response","synthetic":true,"types":[]},{"text":"impl Freeze for Release","synthetic":true,"types":[]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
