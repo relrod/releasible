@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Release","Represents a given release of an Ansible product such as `ansible`, `ansible-base`, or `ansible-core`."]]});

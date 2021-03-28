@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["releasible"] = [{"text":"impl StructuralEq for Product","synthetic":false,"types":[]},{"text":"impl StructuralEq for Release","synthetic":false,"types":[]},{"text":"impl StructuralEq for Stage","synthetic":false,"types":[]},{"text":"impl StructuralEq for Version","synthetic":false,"types":[]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

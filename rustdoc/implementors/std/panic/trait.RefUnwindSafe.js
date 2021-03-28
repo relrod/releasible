@@ -1,0 +1,4 @@
+(function() {var implementors = {};
+implementors["main"] = [{"text":"impl RefUnwindSafe for TEMPLATES","synthetic":true,"types":[]}];
+implementors["releasible"] = [{"text":"impl !RefUnwindSafe for Error","synthetic":true,"types":[]},{"text":"impl RefUnwindSafe for Product","synthetic":true,"types":[]},{"text":"impl RefUnwindSafe for Release","synthetic":true,"types":[]},{"text":"impl RefUnwindSafe for Stage","synthetic":true,"types":[]},{"text":"impl RefUnwindSafe for Version","synthetic":true,"types":[]},{"text":"impl RefUnwindSafe for Response","synthetic":true,"types":[]},{"text":"impl RefUnwindSafe for Release","synthetic":true,"types":[]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
