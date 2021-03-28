@@ -57,3 +57,4 @@ jobs:
         with:
           branch: gh-pages
           folder: site
+          clean: false
