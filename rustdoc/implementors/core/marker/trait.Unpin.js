@@ -1,4 +1,0 @@
-(function() {var implementors = {};
-implementors["main"] = [{"text":"impl Unpin for TEMPLATES","synthetic":true,"types":[]}];
-implementors["releasible"] = [{"text":"impl Unpin for Error","synthetic":true,"types":[]},{"text":"impl Unpin for Product","synthetic":true,"types":[]},{"text":"impl Unpin for Release","synthetic":true,"types":[]},{"text":"impl Unpin for Stage","synthetic":true,"types":[]},{"text":"impl Unpin for Version","synthetic":true,"types":[]},{"text":"impl Unpin for Response","synthetic":true,"types":[]},{"text":"impl Unpin for Release","synthetic":true,"types":[]}];
-if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

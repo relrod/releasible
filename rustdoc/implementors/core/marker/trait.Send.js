@@ -1,4 +1,0 @@
-(function() {var implementors = {};
-implementors["main"] = [{"text":"impl Send for TEMPLATES","synthetic":true,"types":[]}];
-implementors["releasible"] = [{"text":"impl Send for Error","synthetic":true,"types":[]},{"text":"impl Send for Product","synthetic":true,"types":[]},{"text":"impl Send for Release","synthetic":true,"types":[]},{"text":"impl Send for Stage","synthetic":true,"types":[]},{"text":"impl Send for Version","synthetic":true,"types":[]},{"text":"impl Send for Response","synthetic":true,"types":[]},{"text":"impl Send for Release","synthetic":true,"types":[]}];
-if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

@@ -1,1 +1,0 @@
-initSidebarItems({"mod":[["error",""],["product",""],["release",""],["version","This module contains types and implementations which represent the version of an Ansible product (such as ansible, ansible-core, ansible-base)."]]});
