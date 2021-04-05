@@ -147,6 +147,11 @@ class PullRequest:
                 return True
         return False
 
+    @property
+    def needs_info(self):
+        labels = [x['name'] for x in self.pr.get('labels', [])]
+        return 'needs_info' in labels
+
 @dataclass
 class Backport(PullRequest):
     original: PullRequest

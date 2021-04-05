@@ -37,6 +37,9 @@
                   {% if bp.is_docs %}
                     <span class="badge bg-info text-dark">docs</span>
                   {% endif %}
+                  {% if bp.needs_info %}
+                    <span class="badge bg-warning text-dark">needs info</span>
+                  {% endif %}
                 </td>
                 <td><a href="{{ bp.pr['user']['html_url'] }}">@{{ bp.pr['user']['login'] }}</a></td>
                 <td>
