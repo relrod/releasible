@@ -12,7 +12,7 @@ from releasible.backport import BackportFinder
 from releasible.model.pullrequest import Backport
 
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN_RO')
-VERSIONS = ['2.8', '2.9', '2.10']
+VERSIONS = ['2.8', '2.9', '2.10', '2.11']
 
 async def ctx_aut(template):
     aio_session = aiohttp.ClientSession()
